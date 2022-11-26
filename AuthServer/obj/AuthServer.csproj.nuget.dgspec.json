@@ -27,7 +27,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\repos\\DormSchedule\\Com\\Com.csproj": {
+                "projectPath": "D:\\repos\\DormSchedule\\Com\\Com.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -39,6 +43,16 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.25.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.25.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -59,6 +73,21 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "D:\\repos\\DormSchedule\\Com\\Com.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\repos\\DormSchedule\\Com\\Com.csproj",
+        "projectName": "Com",
+        "projectPath": "D:\\repos\\DormSchedule\\Com\\Com.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
       }
     }
   }
