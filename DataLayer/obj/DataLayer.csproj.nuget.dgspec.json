@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repos\\DormSchedule\\DataLayer\\DataLayer.csproj": {}
+    "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {}
   },
   "projects": {
-    "D:\\repos\\DormSchedule\\DataLayer\\DataLayer.csproj": {
+    "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\DormSchedule\\DataLayer\\DataLayer.csproj",
+        "projectUniqueName": "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj",
         "projectName": "DataLayer",
-        "projectPath": "D:\\repos\\DormSchedule\\DataLayer\\DataLayer.csproj",
+        "projectPath": "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj",
         "packagesPath": "C:\\Users\\dagge\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\DormSchedule\\DataLayer\\obj\\",
+        "outputPath": "D:\\repos\\CleaningPlanner\\DataLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dagge\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -70,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
