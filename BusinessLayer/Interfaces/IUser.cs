@@ -10,9 +10,10 @@ namespace BusinessLayer.Interfaces
     public interface IUser
     {
         public IEnumerable<User> GetAlUsers();
-        public User GetUser(int id);
-        public User CreateUser(User user);
-        public User UpdateUser(User user);
+        public User CreateUser(User user, LoginInformation loginInformation);
         public int DeleteUser(User user);
+        public int DeleteUser(int id);
+        public User GetUser(int id);
+        public User UpdateUser(User user);
     }
 }

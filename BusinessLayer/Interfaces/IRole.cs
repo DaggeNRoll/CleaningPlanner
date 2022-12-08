@@ -9,10 +9,7 @@ namespace BusinessLayer.Interfaces
 {
     public interface IRole
     {
-        public IEnumerable<Role> GetAllUserRoles(User user);
-        public Role GetRoleByUserAndRoom(User user, Room room);
-        public Role CreateRole(User user, Room room);
-        public Role UpdateRole(Role role);
-        public int DeleteRole(Role role);
+        public IEnumerable<Role> GetAllRoles();
+
     }
 }
