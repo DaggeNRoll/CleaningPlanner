@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vI6sMVuOUKGtBKvlddGChVuqYxaVP9iBPqQSRWEuV9lQK5tmNO8kFuOaq9AMQK5mHaVHmbQ6R2mwlOlHDuQVcg==",
+  "dgSpecHash": "0/L5h3abvpJXZu8x+epwewYBbpVeoJ8EYmPv1NObopGWtJwzqU3ZNNcdSXYdj2dyy17000MyLYrUXw/NFHzTxA==",
   "success": true,
   "projectFilePath": "D:\\repos\\CleaningPlanner\\AuthServer\\AuthServer.csproj",
   "expectedPackageFiles": [
@@ -33,8 +33,7 @@
     "C:\\Users\\dagge\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
     "C:\\Users\\dagge\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",
     "C:\\Users\\dagge\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
-    "C:\\Users\\dagge\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
-    "C:\\Users\\dagge\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+    "C:\\Users\\dagge\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zcax3JZCtMj3O1o+u4TbP6PqeITolKI4IVlp8e33FhDH+b44CRDi4F6oKa6B6ohscONwAk47pb9Hc5M45qaPFA==",
+  "dgSpecHash": "4xVQeE2IpgaFKHccbUfx20PgRQBIPfRXfupmL1PVSilkoZvRXkkaw869TzTUOmBTNqpUmvrMmfYHUpm2lwkW7Q==",
   "success": true,
-  "projectFilePath": "D:\\repos\\DormSchedule\\ResourceServer\\ResourceServer.csproj",
+  "projectFilePath": "D:\\repos\\CleaningPlanner\\ResourceServer\\ResourceServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dagge\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\dagge\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
