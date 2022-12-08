@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer", "AuthServer\Au
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com", "Com\Com.csproj", "{42A892B0-08C8-480E-A89A-3109F8B99430}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{273D6AD6-C879-4F30-AB3D-C1ABFF3314AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{273D6AD6-C879-4F30-AB3D-C1ABFF3314AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceServer", "ResourceServer\ResourceServer.csproj", "{3BFDFCFB-0D12-41D6-B54B-2D7B63529437}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceServer", "ResourceServer\ResourceServer.csproj", "{3BFDFCFB-0D12-41D6-B54B-2D7B63529437}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{145DB858-DC6F-425C-A173-EA84AF9FAC61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{3BFDFCFB-0D12-41D6-B54B-2D7B63529437}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BFDFCFB-0D12-41D6-B54B-2D7B63529437}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BFDFCFB-0D12-41D6-B54B-2D7B63529437}.Release|Any CPU.Build.0 = Release|Any CPU
+		{145DB858-DC6F-425C-A173-EA84AF9FAC61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{145DB858-DC6F-425C-A173-EA84AF9FAC61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{145DB858-DC6F-425C-A173-EA84AF9FAC61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{145DB858-DC6F-425C-A173-EA84AF9FAC61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
