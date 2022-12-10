@@ -1,3 +1,6 @@
+using BusinessLayer;
+using BusinessLayer.Implementations;
+using BusinessLayer.Interfaces;
 using DataLayer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +30,14 @@ namespace ResourceServer
         {
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DSDbContext>(options => options.UseMySql(connection, new MySqlServerVersion(new Version(8,0,15)), b => b.MigrationsAssembly(nameof(DataLayer))));
+            
+            services.AddTransient<ICleaningSpace, EFCleaningSpaceRepository>();
+            services.AddTransient<ILoginInformation, EFLoginInformationRepository>();
+            services.AddTransient<IRole, EFRoleRepository>();
+            services.AddTransient<IUser, EFUserRepository>();
+
+            services.AddScoped<DataManager>();
+
             services.AddControllersWithViews();
         }
 
