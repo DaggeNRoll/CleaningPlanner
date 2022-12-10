@@ -24,7 +24,7 @@ namespace DataLayer
             public DSDbContext CreateDbContext(string[] args)
             {
                 var optionsBuilder = new DbContextOptionsBuilder<DSDbContext>();
-                optionsBuilder.UseMySql("server=std-mysql.ist.mospolytech.ru;database=std_1981_dorm_schedule;user=std_1981_dorm_schedule;password=Vhhvze05042002",
+                optionsBuilder.UseMySql("server=std-mysql.ist.mospolytech.ru;database=std_1981_dorm_schedule;user=std_1981_dorm_schedule;password=FakePassword",
                     new MySqlServerVersion(new Version(8, 0, 15)), b => b.MigrationsAssembly(nameof(DataLayer)));
 
                 return new DSDbContext(optionsBuilder.Options);
