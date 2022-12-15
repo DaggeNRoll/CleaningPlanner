@@ -120,3 +120,6 @@ D:\repos\CleaningPlanner\ResourceServer\obj\Debug\net5.0\refint\ResourceServer.d
 D:\repos\CleaningPlanner\ResourceServer\obj\Debug\net5.0\ResourceServer.pdb
 D:\repos\CleaningPlanner\ResourceServer\obj\Debug\net5.0\ResourceServer.genruntimeconfig.cache
 D:\repos\CleaningPlanner\ResourceServer\obj\Debug\net5.0\ref\ResourceServer.dll
+D:\repos\DormSchedule\ResourceServer\bin\Debug\net5.0\BusinessLayer.dll
+D:\repos\DormSchedule\ResourceServer\bin\Debug\net5.0\BusinessLayer.pdb
+D:\repos\DormSchedule\ResourceServer\bin\Debug\net5.0\DataLayer.dll.config

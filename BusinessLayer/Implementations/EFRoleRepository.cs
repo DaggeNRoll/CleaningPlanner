@@ -62,6 +62,11 @@ namespace BusinessLayer.Implementations
             return _context.Roles.FirstOrDefault(r=>r.UserId==user.Id && r.RoomId==room.Id);
         }
 
+        public IEnumerable<Role> GetRolesByUser(int userId)
+        {
+            return _context.Roles.Where(r=>r.UserId==userId);
+        }
+
         public IEnumerable<Role> GetRolesWithUsers(Room room)
         {
             return _context.Roles.Where(r=>r.RoomId==room.Id).Include(r=>r.User).ToList();

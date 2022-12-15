@@ -74,6 +74,12 @@ namespace BusinessLayer.Implementations
             return _context.CleaningSpaces.Include(s=>s.Users).Where(s=>s.Users.Contains(user)).Include(s=>s.Room);
         }
 
+        public IEnumerable<CleaningSpace> GetCleaningSpacesByUser(int userId)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+            return _context.CleaningSpaces.Include(s=>s.Users).Where(s=>s.Users.Contains(user));
+        }
+
         public CleaningSpace UpdateCleaningSpace(CleaningSpace space)
         {
             var spaceToBeUpdated = GetCleaningSpace(space);

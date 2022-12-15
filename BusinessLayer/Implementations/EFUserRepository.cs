@@ -62,7 +62,7 @@ namespace BusinessLayer.Implementations
 
         public User GetUser(int id)
         {
-            var user = _context.Users.Where(u=>u.Id==id).FirstOrDefault();
+            var user = _context.Users.Include(u=>u.Rooms).Include(u=>u.Roles).Include(u=>u.CleaningSpaces).Where(u=>u.Id==id).FirstOrDefault();
             return user;
         }
 
