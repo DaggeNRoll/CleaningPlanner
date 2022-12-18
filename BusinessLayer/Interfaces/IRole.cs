@@ -18,6 +18,7 @@ namespace BusinessLayer.Interfaces
         public Role UpdateRole(Role role);
         public int DeleteRole(int id);
         public int DeleteRole(Role role);
+        public void SaveRole(Role role);
 
     }
 }

@@ -54,7 +54,7 @@ namespace BusinessLayer.Implementations
 
         public Role GetRole(int id)
         {
-           return _context.Roles.FirstOrDefault(r=>r.Id==id);
+           return _context.Roles.Include(r=>r.User).Include(r=>r.Room).FirstOrDefault(r=>r.Id==id);
         }
 
         public Role GetRole(User user, Room room)
@@ -70,6 +70,19 @@ namespace BusinessLayer.Implementations
         public IEnumerable<Role> GetRolesWithUsers(Room room)
         {
             return _context.Roles.Where(r=>r.RoomId==room.Id).Include(r=>r.User).ToList();
+        }
+
+        public void SaveRole(Role role)
+        {
+            if (role.Id != 0)
+            {
+                _context.Entry(role).State = EntityState.Modified;
+            }
+            else
+            {
+                _context.Add(role);
+            }
+            _context.SaveChanges();
         }
 
         public Role UpdateRole(Role role)

@@ -17,5 +17,7 @@ namespace BusinessLayer.Interfaces
         public Room AddRoom(Room room, User user);
         public Room UpdateRoom(Room room);
         public int DeleteRoom(Room room);
+
+        public void SaveRoom(Room room);
     }
 }

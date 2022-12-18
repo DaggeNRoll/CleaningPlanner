@@ -16,7 +16,8 @@ namespace PresentationLayer.Models
         public List<CleaningSpaceViewModel> CleaningSpaces { get; set; }
     }
 
-    public class RoomEditModel {
+    public class RoomEditModel 
+    {
         public int Id { get; set; }
         public string Name { get; set; }
     }

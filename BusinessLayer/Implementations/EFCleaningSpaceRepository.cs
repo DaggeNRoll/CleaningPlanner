@@ -70,7 +70,7 @@ namespace BusinessLayer.Implementations
 
         public CleaningSpace GetCleaningSpaceById(int id)
         {
-            return _context.CleaningSpaces.FirstOrDefault(s => s.Id == id);
+            return _context.CleaningSpaces.Include(s=>s.Room).Include(s=>s.Users).FirstOrDefault(s => s.Id == id);
         }
 
         public IEnumerable<CleaningSpace> GetCleaningSpacesByRoom(Room room)

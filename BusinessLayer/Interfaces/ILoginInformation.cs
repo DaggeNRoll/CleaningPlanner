@@ -16,5 +16,6 @@ namespace BusinessLayer.Interfaces
         public int DeleteLoginInformation(LoginInformation loginInformation);
         public int DeleteLoginInformation(int id);
         public int DeleteLoginInformation(User user);
+        public void SaveLoginInformation(LoginInformation loginInformation);
     }
 }

@@ -65,7 +65,7 @@ namespace BusinessLayer.Implementations
 
         public LoginInformation GetLoginInformation(int id)
         {
-            return _context.LoginInformations.FirstOrDefault(l => l.Id == id);
+            return _context.LoginInformations.Include(l=>l.User).FirstOrDefault(l => l.Id == id);
         }
 
         public LoginInformation UpdateLoginInformation(LoginInformation loginInformation)
@@ -78,6 +78,19 @@ namespace BusinessLayer.Implementations
                 return loginToUpdate;
             }
             return null;
+        }
+
+        public void SaveLoginInformation(LoginInformation loginInformation)
+        {
+            if (loginInformation.Id != 0)
+            {
+                _context.Entry(loginInformation).State = EntityState.Modified;
+            }
+            else
+            {
+                _context.Add(loginInformation);
+            }
+            _context.SaveChanges();
         }
     }
 }

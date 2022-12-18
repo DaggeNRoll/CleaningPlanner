@@ -60,7 +60,7 @@ namespace BusinessLayer.Implementations
 
         public Room GetRoomById(int roomID)
         {
-            return _context.Rooms.FirstOrDefault(r => r.Id == roomID);
+            return _context.Rooms.Include(r=>r.Roles).Include(r=>r.Users).FirstOrDefault(r => r.Id == roomID);
         }
 
         public IEnumerable<Room> GetRoomsByUser(int userID)
@@ -83,6 +83,20 @@ namespace BusinessLayer.Implementations
             }
 
             return userFromDb.Rooms;
+        }
+
+        public void SaveRoom(Room room)
+        {
+            if (room.Id != 0)
+            {
+                _context.Entry(room).State = EntityState.Modified;
+            }
+            else
+            {
+                _context.Add(room);
+            }
+
+            _context.SaveChanges();
         }
 
         public Room UpdateRoom(Room room)
