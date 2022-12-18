@@ -34,6 +34,15 @@ namespace BusinessLayer.Implementations
             return space;
         }
 
+        public void AddUser(CleaningSpace space, User user)
+        {
+            if (space.Users.Contains(user))
+                return;
+
+            space.Users.Add(user);
+            _context.SaveChanges();
+        }
+
         public int DeleteCleaningSpace(CleaningSpace space)
         {
             var spaceToBeDeleted = _context.CleaningSpaces.FirstOrDefault(s=>s.Id==space.Id);
@@ -78,6 +87,19 @@ namespace BusinessLayer.Implementations
         {
             var user = _context.Users.FirstOrDefault(u => u.Id == userId);
             return _context.CleaningSpaces.Include(s=>s.Users).Where(s=>s.Users.Contains(user));
+        }
+
+        public void SaveCleaningSpace(CleaningSpace space)
+        {
+            if (space.Id != 0)
+            {
+                _context.Entry(space).State = EntityState.Modified;
+            }
+            else
+            {
+                _context.Add(space);
+            }
+            _context.SaveChanges();
         }
 
         public CleaningSpace UpdateCleaningSpace(CleaningSpace space)

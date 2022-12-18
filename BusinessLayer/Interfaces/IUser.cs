@@ -15,5 +15,7 @@ namespace BusinessLayer.Interfaces
         public int DeleteUser(int id);
         public User GetUser(int id);
         public User UpdateUser(User user);
+        public void SaveUser(User user);
+        public void AddCleaningSpace(User user, CleaningSpace cleaningSpace);
     }
 }

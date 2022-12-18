@@ -18,5 +18,7 @@ namespace BusinessLayer.Interfaces
         public CleaningSpace AddCleaningSpace(CleaningSpace space, Room room);
         public CleaningSpace UpdateCleaningSpace(CleaningSpace space);
         public int DeleteCleaningSpace(CleaningSpace space);
+        public void AddUser(CleaningSpace space, User user);
+        public void SaveCleaningSpace(CleaningSpace space);
     }
 }

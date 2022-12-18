@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repos\\DormSchedule\\DataLayer\\DataLayer.csproj": {}
+    "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {}
   },
   "projects": {
-    "D:\\repos\\DormSchedule\\DataLayer\\DataLayer.csproj": {
+    "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\DormSchedule\\DataLayer\\DataLayer.csproj",
+        "projectUniqueName": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj",
         "projectName": "DataLayer",
-        "projectPath": "D:\\repos\\DormSchedule\\DataLayer\\DataLayer.csproj",
+        "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj",
         "packagesPath": "C:\\Users\\dagge\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\DormSchedule\\DataLayer\\obj\\",
+        "outputPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dagge\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -61,7 +61,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -70,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

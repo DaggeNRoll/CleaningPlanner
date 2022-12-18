@@ -13,6 +13,7 @@ namespace BusinessLayer.Implementations
     public class EFUserRepository : IUser
     {
         private DSDbContext _context;
+        private EFCleaningSpaceRepository _cleaningSpaces;
 
         public EFUserRepository(DSDbContext context)
         {
@@ -79,6 +80,27 @@ namespace BusinessLayer.Implementations
             return null;
         }
 
+        public void SaveUser(User user)
+        {
+            if (user.Id != 0)
+            {
+                _context.Entry(user).State = EntityState.Modified;
+            }
+            else
+            {
+                _context.Add(user);
+            }
+            _context.SaveChanges();
+        }
+
+        public void AddCleaningSpace(User user, CleaningSpace cleaningSpace) 
+        {
+            if (user.CleaningSpaces.Contains(cleaningSpace))
+                return;
+
+            user.CleaningSpaces.Add(cleaningSpace);
+            _context.SaveChanges();
+        }
        
     }
 }

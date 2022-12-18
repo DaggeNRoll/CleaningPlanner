@@ -962,11 +962,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\repos\\DormSchedule\\ResourceServer\\ResourceServer.csproj",
+      "projectUniqueName": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\ResourceServer\\ResourceServer.csproj",
       "projectName": "ResourceServer",
-      "projectPath": "D:\\repos\\DormSchedule\\ResourceServer\\ResourceServer.csproj",
+      "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\ResourceServer\\ResourceServer.csproj",
       "packagesPath": "C:\\Users\\dagge\\.nuget\\packages\\",
-      "outputPath": "D:\\repos\\DormSchedule\\ResourceServer\\obj\\",
+      "outputPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\ResourceServer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dagge\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -983,14 +983,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\repos\\DormSchedule\\BusinessLayer\\BusinessLayer.csproj": {
-              "projectPath": "D:\\repos\\DormSchedule\\BusinessLayer\\BusinessLayer.csproj"
+            "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj": {
+              "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj"
             },
-            "D:\\repos\\DormSchedule\\Com\\Com.csproj": {
-              "projectPath": "D:\\repos\\DormSchedule\\Com\\Com.csproj"
+            "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\Com\\Com.csproj": {
+              "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\Com\\Com.csproj"
             },
-            "D:\\repos\\DormSchedule\\DataLayer\\DataLayer.csproj": {
-              "projectPath": "D:\\repos\\DormSchedule\\DataLayer\\DataLayer.csproj"
+            "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
+              "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj"
             }
           }
         }
@@ -1026,7 +1026,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -1038,7 +1039,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

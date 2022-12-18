@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yG6sNBwQXWIu0NVmLkYIN/3E2UxYcmPrFkBO73AnQc9a3GXvXvnTVH/v9ChjKJAjzpnGxpUwx6xWn/65H2WIRw==",
+  "dgSpecHash": "gP8oBEiKO8GVp7F28A49GaFaGkTdG0v+tus0wmse3/os+w6f1D5WN9/Zz8w1gDI8fIsl774G4+Il0pA4X5fr1Q==",
   "success": true,
-  "projectFilePath": "D:\\repos\\DormSchedule\\AuthServer\\AuthServer.csproj",
+  "projectFilePath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\AuthServer\\AuthServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dagge\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\dagge\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.17\\microsoft.entityframeworkcore.5.0.17.nupkg.sha512",
