@@ -26,7 +26,7 @@ namespace BusinessLayer.Implementations
             return room;
         }
 
-        public Room AddRoom(Room room, User user)//проверить на практике, может не работать. а лучше вообще сделать потом;) //TODO
+        /*public Room AddRoom(Room room, User user)//проверить на практике, может не работать. а лучше вообще сделать потом;) //TODO
         {
             var userFromDb = _context.Users.Include(r=>r.Rooms).FirstOrDefault(u=>u.Id==user.Id);
 
@@ -37,7 +37,7 @@ namespace BusinessLayer.Implementations
                 return room;
             }
             return null;
-        }
+        }*/
 
         public int DeleteRoom(Room room)
         {
@@ -63,7 +63,7 @@ namespace BusinessLayer.Implementations
             return _context.Rooms.Include(r=>r.Roles).Include(r=>r.Users).FirstOrDefault(r => r.Id == roomID);
         }
 
-        public IEnumerable<Room> GetRoomsByUser(int userID)
+        /*public IEnumerable<Room> GetRoomsByUser(int userID)
         {
             var user = _context.Users.FirstOrDefault(user=>user.Id==userID);
             if (user == null)
@@ -83,7 +83,7 @@ namespace BusinessLayer.Implementations
             }
 
             return userFromDb.Rooms;
-        }
+        }*/
 
         public void SaveRoom(Room room)
         {

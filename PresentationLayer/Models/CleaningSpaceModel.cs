@@ -10,7 +10,7 @@ namespace PresentationLayer.Models
     public class CleaningSpaceViewModel
     {
         public CleaningSpace CleaningSpace { get; set; }
-        public RoomViewModel Room { get; set; }
+        /*public RoomViewModel Room { get; set; }*/
         public List<UserViewModel> Users { get; set; }
     }
 

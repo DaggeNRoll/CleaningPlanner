@@ -367,6 +367,20 @@
         "runtime": {
           "bin/placeholder/DataLayer.dll": {}
         }
+      },
+      "PresentationLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "BusinessLayer": "1.0.0",
+          "DataLayer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PresentationLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PresentationLayer.dll": {}
+        }
       }
     }
   },
@@ -944,6 +958,11 @@
       "type": "project",
       "path": "../DataLayer/DataLayer.csproj",
       "msbuildProject": "../DataLayer/DataLayer.csproj"
+    },
+    "PresentationLayer/1.0.0": {
+      "type": "project",
+      "path": "../PresentationLayer/PresentationLayer.csproj",
+      "msbuildProject": "../PresentationLayer/PresentationLayer.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -953,7 +972,8 @@
       "DataLayer >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 5.0.17",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.17",
-      "Pomelo.EntityFrameworkCore.MySql >= 5.0.4"
+      "Pomelo.EntityFrameworkCore.MySql >= 5.0.4",
+      "PresentationLayer >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -991,6 +1011,9 @@
             },
             "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
               "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj"
+            },
+            "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\PresentationLayer\\PresentationLayer.csproj": {
+              "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\PresentationLayer\\PresentationLayer.csproj"
             }
           }
         }

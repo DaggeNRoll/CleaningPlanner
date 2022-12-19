@@ -12,13 +12,13 @@ namespace PresentationLayer.Services
     public class RoleService
     {
         private DataManager _dataManager;
-        private UserService _userService;
-        private RoomService _roomService;
+        //private UserService _userService;
+        //private RoomService _roomService;
         public RoleService(DataManager dataManager)
         {
             _dataManager= dataManager;
-            _userService = new UserService(dataManager);
-            _roomService= new RoomService(dataManager);
+            /*_userService = new UserService(dataManager);
+            _roomService= new RoomService(dataManager);*/
         }
         public RoleViewModel RoleDbToViewModel(int id)
         {
@@ -27,8 +27,8 @@ namespace PresentationLayer.Services
             return new RoleViewModel()
             { 
                 Role=role,
-                User=_userService.UserDbModelToView(role.UserId),
-                Room=_roomService.RoomDbToViewModel(role.RoomId),
+                //User=_userService.UserDbModelToView(role.UserId),
+                //Room=_roomService.RoomDbToViewModel(role.RoomId),
             };
         }
 

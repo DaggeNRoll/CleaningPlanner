@@ -39,6 +39,7 @@
           "Microsoft.EntityFrameworkCore": "5.0.17",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.17",
           "Pomelo.EntityFrameworkCore.MySql": "5.0.4",
+          "PresentationLayer": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -522,6 +523,18 @@
         },
         "compile": {
           "DataLayer.dll": {}
+        }
+      },
+      "PresentationLayer/1.0.0": {
+        "dependencies": {
+          "BusinessLayer": "1.0.0",
+          "DataLayer": "1.0.0"
+        },
+        "runtime": {
+          "PresentationLayer.dll": {}
+        },
+        "compile": {
+          "PresentationLayer.dll": {}
         }
       },
       "Microsoft.IdentityModel.Tokens/6.25.0.0": {
@@ -2407,6 +2420,11 @@
       "sha512": ""
     },
     "DataLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PresentationLayer/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

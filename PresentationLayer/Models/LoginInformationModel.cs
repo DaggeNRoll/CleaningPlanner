@@ -10,7 +10,7 @@ namespace PresentationLayer.Models
     public class LoginInformationViewModel
     {
         public LoginInformation LoginInformation { get; set; }
-        public UserViewModel User { get; set; }
+        /*public UserViewModel User { get; set; }*/
     }
 
     public class LoginInformationEditModel

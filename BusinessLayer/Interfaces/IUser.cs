@@ -9,7 +9,7 @@ namespace BusinessLayer.Interfaces
 {
     public interface IUser
     {
-        public IEnumerable<User> GetAlUsers();
+        public IEnumerable<User> GetAllUsers();
         public User CreateUser(User user, LoginInformation loginInformation);
         public int DeleteUser(User user);
         public int DeleteUser(int id);

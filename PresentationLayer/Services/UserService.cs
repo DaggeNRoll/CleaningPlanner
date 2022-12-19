@@ -12,16 +12,16 @@ namespace PresentationLayer.Services
     public class UserService
     {
         private DataManager _dataManager;
-        private RoomService _roomService;
+        //private RoomService _roomService;
         private RoleService _roleService;
-        private CleaningSpaceService _cleaningSpaceService;
+        /*private CleaningSpaceService _cleaningSpaceService;*/
 
         public UserService(DataManager dataManager)
         {
             _dataManager = dataManager;
-            _roomService = new RoomService(_dataManager);
+           // _roomService = new RoomService(_dataManager);
             _roleService = new RoleService(_dataManager);
-            _cleaningSpaceService = new CleaningSpaceService(_dataManager);
+            /*_cleaningSpaceService = new CleaningSpaceService(_dataManager);*/
         }
 
         public UserViewModel UserDbModelToView(int userId)
@@ -33,28 +33,27 @@ namespace PresentationLayer.Services
             var cleaningSpaces = _dataManager.CleaningSpaceRepository.GetCleaningSpacesByUser(userId);
             var roles=_dataManager.RoleRepository.GetRolesByUser(userId);*/
 
-            var rooms = new List<RoomViewModel>();
 
-            var cleaningSpaces = new List<CleaningSpaceViewModel>();
+            /*var cleaningSpaces = new List<CleaningSpaceViewModel>();*/
             var roles = new List<RoleViewModel>();
 
 
-            foreach (var item in user.Rooms)
+            /*foreach (var item in user.Rooms)
             {
                 rooms.Add(_roomService.RoomDbToViewModel(item.Id));
-            }
+            }*/
 
-            foreach (var cleaningSpace in user.CleaningSpaces)
+            /*foreach (var cleaningSpace in user.CleaningSpaces)
             {
-                cleaningSpaces.Add(_cleaningSpaceService.CleaningSpaceDbToViewModel(cleaningSpace.Id));
-            }
+                U;
+            }*/
 
             foreach (var role in user.Roles)
             {
                 roles.Add(_roleService.RoleDbToViewModel(role.Id));
             }
 
-            return new UserViewModel() { User = user, CleaningSpaces = cleaningSpaces, Roles = roles, Rooms = rooms };
+            return new UserViewModel() { User = user, Roles = roles};
         }
 
         public UserEditModel GetUserEditModel(int userId)
@@ -66,6 +65,7 @@ namespace PresentationLayer.Services
                 Id = userId,
                 FullName = modelFromDb.FullName,
                 NickName = modelFromDb.NickName,
+                RoomId=modelFromDb.RoomId,
             };
 
             return editModel;
@@ -86,6 +86,7 @@ namespace PresentationLayer.Services
                 {
                     FullName = editModel.FullName,
                     NickName = editModel.NickName,
+                    RoomId=editModel.RoomId,
                 };
             }
             _dataManager.UserRepository.SaveUser(user);
@@ -108,6 +109,7 @@ namespace PresentationLayer.Services
                 {
                     FullName = userEditModel.FullName,
                     NickName = userEditModel.NickName,
+                    RoomId=userEditModel.RoomId,
                 };
             }
 
@@ -134,6 +136,19 @@ namespace PresentationLayer.Services
             _dataManager.CleaningSpaceRepository.AddUser(cleaningSpace, user);
 
             return UserDbModelToView(user.Id);
+        }
+
+        public List<UserViewModel> GetAllUsers()
+        {
+            var users = _dataManager.UserRepository.GetAllUsers();
+            var userModels = new List<UserViewModel>();
+
+            foreach(var user in users)
+            {
+                userModels.Add(UserDbModelToView(user.Id));
+            }
+
+            return userModels;
         }
     }
 }

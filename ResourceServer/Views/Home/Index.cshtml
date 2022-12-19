@@ -1,6 +1,18 @@
-﻿@{
+﻿@using PresentationLayer.Models;
+@model List<UserViewModel>
+
+@{
     ViewData["Title"] = "Home Page";
 }
+
+<ul>
+    @foreach(var item in Model)
+    {
+        <li>
+            <a asp-action="Index" asp-controller="UserController" asp-route-userID="@item.User.Id">@item.User.FullName</a>
+        </li>
+    }
+</ul>
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>

@@ -55,15 +55,14 @@ namespace BusinessLayer.Implementations
             return -1;
         }
 
-        public IEnumerable<User> GetAlUsers()
+        public IEnumerable<User> GetAllUsers()
         {
-          
-            return _context.Users.ToList();
+            return _context.Users.Include(u=>u.Roles).Include(u=>u.Room).Include(u=>u.CleaningSpaces).ToList();
         }
 
         public User GetUser(int id)
         {
-            var user = _context.Users.Include(u=>u.Rooms).Include(u=>u.Roles).Include(u=>u.CleaningSpaces).Where(u=>u.Id==id).FirstOrDefault();
+            var user = _context.Users.Include(u=>u.Room).Include(u=>u.Roles).Include(u=>u.CleaningSpaces).Where(u=>u.Id==id).FirstOrDefault();
             return user;
         }
 

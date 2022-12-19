@@ -49,7 +49,7 @@ namespace BusinessLayer.Implementations
 
         public IEnumerable<Role> GetAllRoles()//надо проверить инклюды
         {
-            return _context.Roles.Include(r=>r.User).Include(r=>r.User.Rooms).ToList();
+            return _context.Roles.Include(r=>r.User).Include(r=>r.User.Room).ToList();
         }
 
         public Role GetRole(int id)

@@ -10,8 +10,8 @@ namespace PresentationLayer.Models
     public class RoleViewModel
     {
         public Role Role { get; set; }
-        public UserViewModel User { get; set; }
-        public RoomViewModel Room { get; set; }
+        /*public UserViewModel User { get; set; }
+        public RoomViewModel Room { get; set; }*/
     }
 
     public class RoleEditModel

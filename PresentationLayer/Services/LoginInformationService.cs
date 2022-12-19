@@ -12,12 +12,12 @@ namespace PresentationLayer.Services
     public class LoginInformationService
     {
         private DataManager _dataManager;
-        private UserService _userService;
+        //private UserService _userService;
 
         public LoginInformationService(DataManager dataManager)
         {
             _dataManager = dataManager;
-            _userService = new UserService(dataManager);
+            //_userService = new UserService(dataManager);
         }
 
         public LoginInformationViewModel LoginInformationDbToViewModel(int id)
@@ -27,7 +27,7 @@ namespace PresentationLayer.Services
             return new LoginInformationViewModel()
             {
                 LoginInformation = loginFromDb,
-                User = _userService.UserDbModelToView(loginFromDb.UserId)
+                //User = _userService.UserDbModelToView(loginFromDb.UserId)
             };
         }
 

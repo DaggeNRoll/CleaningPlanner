@@ -10,7 +10,7 @@ namespace PresentationLayer.Models
     public class UserViewModel
     {
         public User User { get; set; }
-        public List<RoomViewModel> Rooms { get; set; }
+        //public Room Room { get; set; }
         public List<CleaningSpaceViewModel> CleaningSpaces { get; set; }
         public List<RoleViewModel> Roles { get; set; }
 
@@ -22,6 +22,7 @@ namespace PresentationLayer.Models
         public int Id { get; set; }
         public string FullName { get; set; }
         public string NickName { get; set; }
+        public int RoomId { get; set; }
 
     }
 }

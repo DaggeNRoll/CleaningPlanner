@@ -12,12 +12,12 @@ namespace PresentationLayer.Services
     public class CleaningSpaceService
     {
         private DataManager _dataManager;
-        private RoomService _roomService;
+        //private RoomService _roomService;
         private UserService _userService;
         public CleaningSpaceService(DataManager dataManager)
         {
             _dataManager = dataManager;
-            _roomService=new RoomService(dataManager);
+            //_roomService=new RoomService(dataManager);
             _userService = new UserService(dataManager);
         }
 
@@ -34,7 +34,7 @@ namespace PresentationLayer.Services
             return new CleaningSpaceViewModel()
             { 
                 CleaningSpace=spaceFromDb,
-                Room=_roomService.RoomDbToViewModel(spaceFromDb.RoomId),
+                //Room=_roomService.RoomDbToViewModel(spaceFromDb.RoomId),
                 Users=users,
             };
         }

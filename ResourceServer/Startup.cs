@@ -35,6 +35,7 @@ namespace ResourceServer
             services.AddTransient<ILoginInformation, EFLoginInformationRepository>();
             services.AddTransient<IRole, EFRoleRepository>();
             services.AddTransient<IUser, EFUserRepository>();
+            services.AddTransient<IRoom, EFRoomRepository>();
 
             services.AddScoped<DataManager>();
 

@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PresentationLayer;
+using PresentationLayer.Models;
 using ResourceServer.Models;
 using System;
 using System.Collections.Generic;
@@ -11,16 +14,19 @@ namespace ResourceServer.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private DataManager _dataManager;
+        private ServiceManager _serviceManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(DataManager dataManager)
         {
-            _logger = logger;
+            _dataManager = dataManager;
+            _serviceManager = new ServiceManager(dataManager);
         }
 
         public IActionResult Index()
         {
-            return View();
+            List<UserViewModel> users = _serviceManager.UserService.GetAllUsers();
+            return View(users);
         }
 
         public IActionResult Privacy()
