@@ -19,5 +19,7 @@ namespace BusinessLayer.Interfaces
         public int DeleteRoom(Room room);
 
         public void SaveRoom(Room room);
-    }
+        public Room GetRoomByUser(int userId);
+
+	}
 }

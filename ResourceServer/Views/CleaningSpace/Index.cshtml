@@ -1,0 +1,23 @@
+﻿@using PresentationLayer.Models
+@model CleaningSpaceViewModel
+
+<div>
+	<h1>@Model.CleaningSpace.Name</h1>
+	<div>
+		@Model.CleaningSpace.Description
+	</div>
+</div>
+<div>
+	<h2>Ответственные</h2>
+	<ul>
+		@if(Model.CleaningSpace.Users!=null){
+			foreach(var user in Model.Users)
+			{
+				<li>@user.User.NickName</li>
+			}
+		}
+	</ul>
+</div>
+<div>
+	@Html.ActionLink("Редактировать","CleaningSpaceEditor","CleaningSpace", new {cleaningSpaceId = Model.CleaningSpace.Id,}, new {@classs = "btn btn-default"})
+</div>

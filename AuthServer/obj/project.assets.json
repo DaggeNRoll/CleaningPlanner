@@ -1359,11 +1359,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\AuthServer\\AuthServer.csproj",
+      "projectUniqueName": "D:\\repos\\DormSchedule\\AuthServer\\AuthServer.csproj",
       "projectName": "AuthServer",
-      "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\AuthServer\\AuthServer.csproj",
+      "projectPath": "D:\\repos\\DormSchedule\\AuthServer\\AuthServer.csproj",
       "packagesPath": "C:\\Users\\dagge\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\AuthServer\\obj\\",
+      "outputPath": "D:\\repos\\DormSchedule\\AuthServer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dagge\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1380,8 +1380,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\Com\\Com.csproj": {
-              "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\Com\\Com.csproj"
+            "D:\\repos\\DormSchedule\\Com\\Com.csproj": {
+              "projectPath": "D:\\repos\\DormSchedule\\Com\\Com.csproj"
             }
           }
         }
@@ -1419,8 +1419,7 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -1432,7 +1431,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }

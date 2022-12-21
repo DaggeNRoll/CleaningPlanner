@@ -1,0 +1,23 @@
+﻿@using PresentationLayer.Models;
+@model RoomViewModel
+
+<div>
+	<h1>Комната @Model.Room.Name</h1>
+</div>
+
+<div>
+	<h2>Места уборки</h2>
+	@if (Model.CleaningSpaces != null)
+	{
+		<ul>
+		@foreach(var cleaningSpace in Model.CleaningSpaces)
+		{
+			<li><a asp-action="Index" asp-controller="CleaningSpace" asp-route-cleaningSpaceId="@cleaningSpace.CleaningSpace.Id">@cleaningSpace.CleaningSpace.Name</a></li>
+		}
+		</ul>
+	}
+	
+	@Html.ActionLink("Добавить место уборки","AddCLeaningSpace","CleaningSpace", new {roomId = Model.Room.Id,}, new {@classs = "btn btn-default"})
+	<br>
+	@Html.ActionLink("Редактировать комнату","RoomEditor","Room", new {roomId = Model.Room.Id,}, new {@classs = "btn btn-default"})
+</div>

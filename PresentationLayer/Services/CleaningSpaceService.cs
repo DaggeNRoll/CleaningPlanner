@@ -59,6 +59,7 @@ namespace PresentationLayer.Services
             if (spaceEditModel.Id != 0)
             {
                 space = _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(spaceEditModel.Id);
+                EnterInformation(ref space, spaceEditModel);
             }
             else
             {
@@ -73,6 +74,18 @@ namespace PresentationLayer.Services
             _dataManager.CleaningSpaceRepository.SaveCleaningSpace(space);
 
             return CleaningSpaceDbToViewModel(space.Id);
+        }
+
+        public CleaningSpaceEditModel CreateCleaningSpaceEditModel()
+        {
+            return new CleaningSpaceEditModel();
+        }
+
+        private void EnterInformation(ref CleaningSpace space, CleaningSpaceEditModel editModel)
+        {
+            space.Name= editModel.Name;
+            space.Description= editModel.Description;
+            space.RoomId= editModel.RoomId;
         }
     }
 }

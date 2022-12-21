@@ -22,7 +22,7 @@ namespace PresentationLayer.Models
         public int Id { get; set; }
         public string FullName { get; set; }
         public string NickName { get; set; }
-        public int RoomId { get; set; }
+        public int? RoomId { get; set; }
 
     }
 }

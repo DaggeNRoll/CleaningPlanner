@@ -1,0 +1,24 @@
+﻿@using PresentationLayer.Models;
+@model RoomEditModel
+
+
+<div>
+	<form asp-action="SaveRoom" asp-controller="Room" method="post">
+
+		@if (Model.Id == 0)
+		{
+			<h1>Создать комнату</h1>
+		}
+		else
+		{
+			<h1>Редактировать информацию о комнате</h1>
+		}
+		
+		<input name="Id" type="hidden" value="@Model.Id"/>
+		<input name="Name" value="@Model.Name"/>
+		<input type="submit"/>
+	</form>
+</div>
+
+
+

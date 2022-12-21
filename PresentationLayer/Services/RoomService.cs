@@ -37,15 +37,23 @@ namespace PresentationLayer.Services
                 users.Add(_userService.UserDbModelToView(user.Id));
             }
 
-            foreach (var role in room.Roles)
+            if (room.Roles != null) 
             {
-                roles.Add(_roleService.RoleDbToViewModel(role.Id));
-            }
+				foreach (var role in room.Roles)
+				{
+					roles.Add(_roleService.RoleDbToViewModel(role.Id));
+				}
+			}
+            
 
-            foreach(var cleaningSpace in room.CleaningSpaces)
+            if (room.CleaningSpaces != null) 
             {
-                cleaningSpaces.Add(_cleaningSpaceService.CleaningSpaceDbToViewModel(cleaningSpace.Id));
-            }
+				foreach (var cleaningSpace in room.CleaningSpaces)
+				{
+					cleaningSpaces.Add(_cleaningSpaceService.CleaningSpaceDbToViewModel(cleaningSpace.Id));
+				}
+			}
+            
 
             return new RoomViewModel() { Room = room, Users = users, Roles = roles, CleaningSpaces = cleaningSpaces };
         }
@@ -70,6 +78,7 @@ namespace PresentationLayer.Services
             if (editModel.Id != 0)
             {
                 room=_dataManager.RoomRepository.GetRoomById(editModel.Id);
+                EditRoomInformation(ref room, editModel);
             }
             else
             {
@@ -82,6 +91,35 @@ namespace PresentationLayer.Services
             _dataManager.RoomRepository.SaveRoom(room);
 
             return RoomDbToViewModel(room.Id);
+        }
+
+        public RoomEditModel CreateRoomEditModel()
+        {
+            return new RoomEditModel();
+        }
+
+        public List<RoomViewModel> GetAllRooms()
+        {
+            var rooms = _dataManager.RoomRepository.GetAllRooms();
+            var roomModels=new List<RoomViewModel>();
+
+            foreach(var room in rooms)
+            {
+                roomModels.Add(RoomDbToViewModel(room.Id));
+            }
+
+            return roomModels;
+        }
+
+        public Room GetRoomByUser(int userId)
+        {
+
+            return _dataManager.RoomRepository.GetRoomByUser(userId);
+            
+        }
+        private void EditRoomInformation(ref Room room, RoomEditModel editModel)
+        {
+            room.Name= editModel.Name;
         }
     }
 }

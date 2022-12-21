@@ -1,0 +1,15 @@
+﻿@using PresentationLayer.Models
+@model CleaningSpaceEditModel
+
+<div>
+	<h1>Редактирование места уборки</h1>
+	<form asp-action="SaveCleaningSpace" asp-controller="CleaningSpace" method="post">
+		<input name="Id" type="hidden" value="@Model.Id" />
+		<input name="Name" value="@Model.Name" />
+		<br />
+		<input name="Description" value="@Model.Description" />
+		<br />
+		<input name="RoomId" type="hidden" value="@Model.RoomId" />
+		<input type="submit" />
+	</form>
+</div>
