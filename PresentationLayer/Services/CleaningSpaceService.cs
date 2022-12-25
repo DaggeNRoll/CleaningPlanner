@@ -42,6 +42,7 @@ namespace PresentationLayer.Services
         public CleaningSpaceEditModel GetCleaningSpaceEditModel(int id)
         {
             var spaceFromDb = _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(id);
+            
 
             return new CleaningSpaceEditModel()
             {
@@ -49,12 +50,14 @@ namespace PresentationLayer.Services
                 Name = spaceFromDb.Name,
                 Description = spaceFromDb.Description,
                 RoomId = spaceFromDb.RoomId,
+                UserIds=spaceFromDb.Users.Select(user=>user.Id).ToList(),
             };
         }
 
         public CleaningSpaceViewModel SaveCleaningSpaceEditModelToDb(CleaningSpaceEditModel spaceEditModel)
         {
             CleaningSpace space;
+            
 
             if (spaceEditModel.Id != 0)
             {
@@ -63,12 +66,18 @@ namespace PresentationLayer.Services
             }
             else
             {
+                List<User> users = new List<User>();
+                foreach(var userId in spaceEditModel.UserIds)
+                {
+                    users.Add(_dataManager.UserRepository.GetUser(userId));
+                }
                 space = new CleaningSpace()
                 {
                     Id = spaceEditModel.Id,
                     Name = spaceEditModel.Name,
                     Description = spaceEditModel.Description,
                     RoomId = spaceEditModel.RoomId,
+                    Users = users,
                 };
             }
             _dataManager.CleaningSpaceRepository.SaveCleaningSpace(space);
@@ -83,9 +92,15 @@ namespace PresentationLayer.Services
 
         private void EnterInformation(ref CleaningSpace space, CleaningSpaceEditModel editModel)
         {
+            List<User> users = space.Users.ToList();
+            foreach(var userId in editModel.UserIds)
+            {
+                users.Add(_dataManager.UserRepository.GetUser(userId));
+            }
             space.Name= editModel.Name;
             space.Description= editModel.Description;
             space.RoomId= editModel.RoomId;
+            space.Users = users;
         }
     }
 }

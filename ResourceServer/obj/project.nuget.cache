@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gMhexK2dsPA0hLFuHuKcj9zVAwyJBn3Bj/XMs/yJT/OJiEiBbwOwyy2aAqXKm6vhD340vfm4pjJ7aP1vBtVY8Q==",
+  "dgSpecHash": "Yv9tQvAwLnnNNNGMCDV7fSo1RhL0dKCEWObGxN7JnIgi7W80ma3MxpGxKm+UI23aTRDlnPlo4Rb5pURAqsRMWw==",
   "success": true,
-  "projectFilePath": "D:\\repos\\DormSchedule\\ResourceServer\\ResourceServer.csproj",
+  "projectFilePath": "D:\\repos\\CleaningPlanner\\ResourceServer\\ResourceServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dagge\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\dagge\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
