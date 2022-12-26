@@ -28,6 +28,10 @@ namespace PresentationLayer.Services
         public RoomViewModel RoomDbToViewModel(int roomId)
         {
             var room=_dataManager.RoomRepository.GetRoomById(roomId);
+            if (room == null)
+            {
+                return null;
+            }
             var users=new List<UserViewModel>();
             var roles = new List<RoleViewModel>();
             var cleaningSpaces = new List<CleaningSpaceViewModel>();
@@ -117,9 +121,56 @@ namespace PresentationLayer.Services
             return _dataManager.RoomRepository.GetRoomByUser(userId);
             
         }
+
+        public RoomApiModel GetApiModel(RoomViewModel viewModel)
+        {
+            RoomApiModel apiModel = new RoomApiModel()
+            {
+                Id = viewModel.Room.Id,
+                Name = viewModel.Room.Name,
+                UserIds = viewModel.Room.Users?.Select(u => u.Id).ToList() ?? new List<int>(),
+                RoleIds = viewModel.Room.Roles?.Select(r => r.Id).ToList() ?? new List<int>(),
+                CleaningSpaceIds = viewModel.Room.CleaningSpaces.Select(c => c.Id).ToList(),
+            };
+            return apiModel;
+        }
+
+        public RoomApiModel SaveApiModelToDb(RoomApiModel apiModel)
+        {
+            Room room;
+
+            if (apiModel.Id != 0)
+            {
+                room=_dataManager.RoomRepository.GetRoomById(apiModel.Id);
+               
+            }
+            else
+            {
+                room = new Room();
+                
+            }
+            EditRoomInformation(ref room, apiModel);
+            _dataManager.RoomRepository.SaveRoom(room);
+            return GetApiModel(RoomDbToViewModel(room.Id));
+        }
+
+        public int DeleteRoom(int roomId)
+        {
+            var room = _dataManager.RoomRepository.GetRoomById(roomId);
+            return _dataManager.RoomRepository.DeleteRoom(room);
+        }
+        
         private void EditRoomInformation(ref Room room, RoomEditModel editModel)
         {
             room.Name= editModel.Name;
+        }
+
+        private void EditRoomInformation(ref Room room, RoomApiModel apiModel)
+        {
+            room.Name = apiModel.Name;
+            room.Users = apiModel.UserIds.Select(ui => _dataManager.UserRepository.GetUser(ui)).ToList();
+            room.Roles=apiModel.RoleIds?.Select(ri=>_dataManager.RoleRepository.GetRole(ri)).ToList() ?? new List<Role>();
+            room.CleaningSpaces = apiModel.CleaningSpaceIds?.Select(si => _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(si)).ToList() ?? new List<CleaningSpace>();
         }
     }
 }

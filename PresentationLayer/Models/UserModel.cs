@@ -25,4 +25,15 @@ namespace PresentationLayer.Models
         public int? RoomId { get; set; }
 
     }
+
+    public class UserApiModel
+    {
+        public int Id { get; set; }
+        public string FullName { get; set; }
+        public string Nickname { get; set; }
+        public int? RoomId { get; set; }
+
+        public List<int> CleaningSpaceIds { get; set; }
+        public List<int> RoleIds { get; set; }
+    }
 }

@@ -60,7 +60,7 @@ namespace BusinessLayer.Implementations
 
         public IEnumerable<CleaningSpace> GetAllCleaningSpaces()
         {
-            return _context.CleaningSpaces.Include(s => s.Room).Include(s => s.Users);
+            return _context.CleaningSpaces.Include(s => s.Room).Include(s => s.Users).ToList();
         }
 
         public CleaningSpace GetCleaningSpace(CleaningSpace space)
