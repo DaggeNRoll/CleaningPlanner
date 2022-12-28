@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repos\\DormSchedule\\AuthServer\\AuthServer.csproj": {}
+    "D:\\repos\\CleaningPlanner\\AuthServer\\AuthServer.csproj": {}
   },
   "projects": {
-    "D:\\repos\\DormSchedule\\AuthServer\\AuthServer.csproj": {
+    "D:\\repos\\CleaningPlanner\\AuthServer\\AuthServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\DormSchedule\\AuthServer\\AuthServer.csproj",
+        "projectUniqueName": "D:\\repos\\CleaningPlanner\\AuthServer\\AuthServer.csproj",
         "projectName": "AuthServer",
-        "projectPath": "D:\\repos\\DormSchedule\\AuthServer\\AuthServer.csproj",
+        "projectPath": "D:\\repos\\CleaningPlanner\\AuthServer\\AuthServer.csproj",
         "packagesPath": "C:\\Users\\dagge\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\DormSchedule\\AuthServer\\obj\\",
+        "outputPath": "D:\\repos\\CleaningPlanner\\AuthServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dagge\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\repos\\DormSchedule\\Com\\Com.csproj": {
-                "projectPath": "D:\\repos\\DormSchedule\\Com\\Com.csproj"
+              "D:\\repos\\CleaningPlanner\\Com\\Com.csproj": {
+                "projectPath": "D:\\repos\\CleaningPlanner\\Com\\Com.csproj"
               }
             }
           }
@@ -83,11 +83,11 @@
         }
       }
     },
-    "D:\\repos\\DormSchedule\\Com\\Com.csproj": {
+    "D:\\repos\\CleaningPlanner\\Com\\Com.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\repos\\DormSchedule\\Com\\Com.csproj",
+        "projectUniqueName": "D:\\repos\\CleaningPlanner\\Com\\Com.csproj",
         "projectName": "Com",
-        "projectPath": "D:\\repos\\DormSchedule\\Com\\Com.csproj",
+        "projectPath": "D:\\repos\\CleaningPlanner\\Com\\Com.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {}
