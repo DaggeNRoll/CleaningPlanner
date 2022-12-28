@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repos\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj": {}
+    "D:\\repos\\DormSchedule\\BusinessLayer\\BusinessLayer.csproj": {}
   },
   "projects": {
-    "D:\\repos\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj": {
+    "D:\\repos\\DormSchedule\\BusinessLayer\\BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj",
+        "projectUniqueName": "D:\\repos\\DormSchedule\\BusinessLayer\\BusinessLayer.csproj",
         "projectName": "BusinessLayer",
-        "projectPath": "D:\\repos\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj",
+        "projectPath": "D:\\repos\\DormSchedule\\BusinessLayer\\BusinessLayer.csproj",
         "packagesPath": "C:\\Users\\dagge\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\CleaningPlanner\\BusinessLayer\\obj\\",
+        "outputPath": "D:\\repos\\DormSchedule\\BusinessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dagge\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
-                "projectPath": "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj"
+              "D:\\repos\\DormSchedule\\DataLayer\\DataLayer.csproj": {
+                "projectPath": "D:\\repos\\DormSchedule\\DataLayer\\DataLayer.csproj"
               }
             }
           }
@@ -62,14 +62,14 @@
         }
       }
     },
-    "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
+    "D:\\repos\\DormSchedule\\DataLayer\\DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj",
+        "projectUniqueName": "D:\\repos\\DormSchedule\\DataLayer\\DataLayer.csproj",
         "projectName": "DataLayer",
-        "projectPath": "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj",
+        "projectPath": "D:\\repos\\DormSchedule\\DataLayer\\DataLayer.csproj",
         "packagesPath": "C:\\Users\\dagge\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\CleaningPlanner\\DataLayer\\obj\\",
+        "outputPath": "D:\\repos\\DormSchedule\\DataLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dagge\\AppData\\Roaming\\NuGet\\NuGet.Config",

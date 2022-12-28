@@ -44,9 +44,11 @@ namespace ResourceServer.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUser(int userId, RegisterViewModel registerViewModel)
+        [Route("register")]
+        public IActionResult CreateUser(RegisterViewModel registerViewModel)
         {
-
+            var apiModelFromDb = _serviceManager.UserService.CreateUser(registerViewModel);
+            return Ok(apiModelFromDb);
         }
 
         [HttpDelete]

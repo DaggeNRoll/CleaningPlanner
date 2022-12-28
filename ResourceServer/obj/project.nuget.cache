@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OGzuuG3P/E+kQhSqb+4Lc49T28DzT6fp9PivNediVHiJBGE0ND36+pwQahvwacm1wz2a0yZVo8hKBc8U7X4bgg==",
+  "dgSpecHash": "KaVDZ3iqKjcpUJ4y4uyi+888oPRoUe4uVxa8tsgI39mAMrl1u/44TMNq3Ihwn001FlYlcyT7n/P27jnXaaLa+g==",
   "success": true,
-  "projectFilePath": "D:\\repos\\CleaningPlanner\\ResourceServer\\ResourceServer.csproj",
+  "projectFilePath": "D:\\repos\\DormSchedule\\ResourceServer\\ResourceServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dagge\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\dagge\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.9\\microsoft.aspnet.webapi.client.5.2.9.nupkg.sha512",
