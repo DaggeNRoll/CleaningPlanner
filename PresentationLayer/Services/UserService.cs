@@ -205,6 +205,24 @@ namespace PresentationLayer.Services
             return _dataManager.UserRepository.DeleteUser(user);
         }
 
+        public UserApiModel CreateUser(RegisterViewModel registerViewModel)
+        {
+            var apiModel = RegisterModelToApi(registerViewModel);
+               return SaveApiModelToDb(apiModel);
+        }
+
+        public UserApiModel RegisterModelToApi(RegisterViewModel registerViewModel)
+        {
+            UserApiModel apiModel = new UserApiModel()
+            {
+                Id = registerViewModel.UserId,
+                FullName = registerViewModel.FullName,
+                Nickname = registerViewModel.NickName,
+                CleaningSpaceIds = new List<int>(),
+            };
+            return apiModel;
+        }
+
         private void EditUserInformation(ref User user, UserApiModel userApiModel)
         {
             user.FullName = userApiModel.FullName;

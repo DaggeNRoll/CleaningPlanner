@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PresentationLayer;
 using PresentationLayer.Models;
+
 using System.Linq;
 
 namespace ResourceServer.Controllers
@@ -40,6 +41,12 @@ namespace ResourceServer.Controllers
         {
             var apiModelFromDb = _serviceManager.UserService.SaveApiModelToDb(userApiModel);
             return Ok(apiModelFromDb);
+        }
+
+        [HttpPost]
+        public IActionResult CreateUser(int userId, RegisterViewModel registerViewModel)
+        {
+
         }
 
         [HttpDelete]
