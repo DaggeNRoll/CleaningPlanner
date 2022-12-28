@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\ResourceServer\\ResourceServer.csproj": {}
+    "D:\\repos\\CleaningPlanner\\ResourceServer\\ResourceServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj": {
+    "D:\\repos\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj",
+        "projectUniqueName": "D:\\repos\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj",
         "projectName": "BusinessLayer",
-        "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj",
+        "projectPath": "D:\\repos\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj",
         "packagesPath": "C:\\Users\\dagge\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\BusinessLayer\\obj\\",
+        "outputPath": "D:\\repos\\CleaningPlanner\\BusinessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dagge\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
-                "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj"
+              "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
+                "projectPath": "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj"
               }
             }
           }
@@ -62,11 +62,11 @@
         }
       }
     },
-    "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\Com\\Com.csproj": {
+    "D:\\repos\\CleaningPlanner\\Com\\Com.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\Com\\Com.csproj",
+        "projectUniqueName": "D:\\repos\\CleaningPlanner\\Com\\Com.csproj",
         "projectName": "Com",
-        "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\Com\\Com.csproj",
+        "projectPath": "D:\\repos\\CleaningPlanner\\Com\\Com.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {}
@@ -77,14 +77,14 @@
         "net48": {}
       }
     },
-    "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
+    "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj",
+        "projectUniqueName": "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj",
         "projectName": "DataLayer",
-        "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj",
+        "projectPath": "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj",
         "packagesPath": "C:\\Users\\dagge\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\obj\\",
+        "outputPath": "D:\\repos\\CleaningPlanner\\DataLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dagge\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -147,14 +147,14 @@
         }
       }
     },
-    "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\PresentationLayer\\PresentationLayer.csproj": {
+    "D:\\repos\\CleaningPlanner\\PresentationLayer\\PresentationLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\PresentationLayer\\PresentationLayer.csproj",
+        "projectUniqueName": "D:\\repos\\CleaningPlanner\\PresentationLayer\\PresentationLayer.csproj",
         "projectName": "PresentationLayer",
-        "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\PresentationLayer\\PresentationLayer.csproj",
+        "projectPath": "D:\\repos\\CleaningPlanner\\PresentationLayer\\PresentationLayer.csproj",
         "packagesPath": "C:\\Users\\dagge\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\PresentationLayer\\obj\\",
+        "outputPath": "D:\\repos\\CleaningPlanner\\PresentationLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dagge\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -171,11 +171,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj": {
-                "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj"
+              "D:\\repos\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj": {
+                "projectPath": "D:\\repos\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj"
               },
-              "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
-                "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj"
+              "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
+                "projectPath": "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj"
               }
             }
           }
@@ -208,14 +208,14 @@
         }
       }
     },
-    "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\ResourceServer\\ResourceServer.csproj": {
+    "D:\\repos\\CleaningPlanner\\ResourceServer\\ResourceServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\ResourceServer\\ResourceServer.csproj",
+        "projectUniqueName": "D:\\repos\\CleaningPlanner\\ResourceServer\\ResourceServer.csproj",
         "projectName": "ResourceServer",
-        "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\ResourceServer\\ResourceServer.csproj",
+        "projectPath": "D:\\repos\\CleaningPlanner\\ResourceServer\\ResourceServer.csproj",
         "packagesPath": "C:\\Users\\dagge\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\ResourceServer\\obj\\",
+        "outputPath": "D:\\repos\\CleaningPlanner\\ResourceServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dagge\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -232,17 +232,17 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj": {
-                "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj"
+              "D:\\repos\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj": {
+                "projectPath": "D:\\repos\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj"
               },
-              "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\Com\\Com.csproj": {
-                "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\Com\\Com.csproj"
+              "D:\\repos\\CleaningPlanner\\Com\\Com.csproj": {
+                "projectPath": "D:\\repos\\CleaningPlanner\\Com\\Com.csproj"
               },
-              "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
-                "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\DataLayer\\DataLayer.csproj"
+              "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
+                "projectPath": "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj"
               },
-              "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\PresentationLayer\\PresentationLayer.csproj": {
-                "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\PresentationLayer\\PresentationLayer.csproj"
+              "D:\\repos\\CleaningPlanner\\PresentationLayer\\PresentationLayer.csproj": {
+                "projectPath": "D:\\repos\\CleaningPlanner\\PresentationLayer\\PresentationLayer.csproj"
               }
             }
           }
@@ -261,7 +261,15 @@
               "target": "Package",
               "version": "[5.2.9, )"
             },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.17, )"
             },
