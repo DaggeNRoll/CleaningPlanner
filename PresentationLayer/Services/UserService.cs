@@ -176,6 +176,7 @@ namespace PresentationLayer.Services
                 RoomId = user.RoomId,
                 CleaningSpaceIds = user.CleaningSpaces.Select(s => s.Id).ToList(),
                 RoleIds = user.Roles.Select(r => r.Id).ToList(),
+                Email=user.Email,
             };
 
             return userApi;
@@ -219,6 +220,7 @@ namespace PresentationLayer.Services
                 FullName = registerViewModel.FullName,
                 Nickname = registerViewModel.NickName,
                 CleaningSpaceIds = new List<int>(),
+                Email=registerViewModel.Email,
             };
             return apiModel;
         }
@@ -230,6 +232,7 @@ namespace PresentationLayer.Services
             user.RoomId= userApiModel.RoomId;
             user.CleaningSpaces = userApiModel.CleaningSpaceIds.Select(cs => _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(cs)).ToList();
             user.Roles=userApiModel.RoleIds?.Select(r=>_dataManager.RoleRepository.GetRole(r)).ToList() ?? new List<Role>();
+            user.Email=userApiModel.Email;
         }
     }
 }
