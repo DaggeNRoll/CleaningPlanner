@@ -150,5 +150,86 @@ namespace PresentationLayer.Services
 
             return userModels;
         }
+
+        public List<UserApiModel> GetAllUserApiModels()
+        {
+            var userIds = _dataManager.UserRepository.GetAllUsers().Select(u=>u.Id);
+            var userApiModels = new List<UserApiModel>();
+
+            foreach(var userId in userIds)
+            {
+                userApiModels.Add(GetApiModelFormDb(userId));
+            }
+
+            return userApiModels;
+
+        }
+
+        public UserApiModel GetApiModelFormDb(int userId)
+        {
+            var user = _dataManager.UserRepository.GetUser(userId);
+            var userApi = new UserApiModel()
+            {
+                Id = user.Id,
+                FullName = user.FullName,
+                Nickname = user.NickName,
+                RoomId = user.RoomId,
+                CleaningSpaceIds = user.CleaningSpaces.Select(s => s.Id).ToList(),
+                RoleIds = user.Roles.Select(r => r.Id).ToList(),
+            };
+
+            return userApi;
+        }
+
+        public UserApiModel SaveApiModelToDb(UserApiModel userApiModel)
+        {
+            User user;
+
+            if (userApiModel.Id != 0)
+            {
+                user = _dataManager.UserRepository.GetUser(userApiModel.Id);
+               
+            }
+            else
+            {
+                user = new User();
+            }
+            EditUserInformation(ref user, userApiModel);
+            _dataManager.UserRepository.SaveUser(user);
+            return GetApiModelFormDb(user.Id);
+        }
+
+        public int DeleteUser(int userId)
+        {
+            var user = _dataManager.UserRepository.GetUser(userId);
+            return _dataManager.UserRepository.DeleteUser(user);
+        }
+
+        public UserApiModel CreateUser(RegisterViewModel registerViewModel)
+        {
+            var apiModel = RegisterModelToApi(registerViewModel);
+               return SaveApiModelToDb(apiModel);
+        }
+
+        public UserApiModel RegisterModelToApi(RegisterViewModel registerViewModel)
+        {
+            UserApiModel apiModel = new UserApiModel()
+            {
+                Id = registerViewModel.UserId,
+                FullName = registerViewModel.FullName,
+                Nickname = registerViewModel.NickName,
+                CleaningSpaceIds = new List<int>(),
+            };
+            return apiModel;
+        }
+
+        private void EditUserInformation(ref User user, UserApiModel userApiModel)
+        {
+            user.FullName = userApiModel.FullName;
+            user.NickName = userApiModel.Nickname;
+            user.RoomId= userApiModel.RoomId;
+            user.CleaningSpaces = userApiModel.CleaningSpaceIds.Select(cs => _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(cs)).ToList();
+            user.Roles=userApiModel.RoleIds?.Select(r=>_dataManager.RoleRepository.GetRole(r)).ToList() ?? new List<Role>();
+        }
     }
 }

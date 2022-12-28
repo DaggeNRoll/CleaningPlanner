@@ -45,3 +45,4 @@ C:\Users\dagge\Source\Repos\DaggeNRoll\CleaningPlanner\DataLayer\obj\Debug\net5.
 C:\Users\dagge\Source\Repos\DaggeNRoll\CleaningPlanner\DataLayer\obj\Debug\net5.0\DataLayer.pdb
 C:\Users\dagge\Source\Repos\DaggeNRoll\CleaningPlanner\DataLayer\obj\Debug\net5.0\DataLayer.genruntimeconfig.cache
 C:\Users\dagge\Source\Repos\DaggeNRoll\CleaningPlanner\DataLayer\obj\Debug\net5.0\ref\DataLayer.dll
+D:\repos\CleaningPlanner\DataLayer\bin\Debug\net5.0\DataLayer.dll.config

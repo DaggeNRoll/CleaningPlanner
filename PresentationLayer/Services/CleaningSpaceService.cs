@@ -42,6 +42,7 @@ namespace PresentationLayer.Services
         public CleaningSpaceEditModel GetCleaningSpaceEditModel(int id)
         {
             var spaceFromDb = _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(id);
+            
 
             return new CleaningSpaceEditModel()
             {
@@ -49,12 +50,14 @@ namespace PresentationLayer.Services
                 Name = spaceFromDb.Name,
                 Description = spaceFromDb.Description,
                 RoomId = spaceFromDb.RoomId,
+                UserIds=spaceFromDb.Users.Select(user=>user.Id).ToList(),
             };
         }
 
         public CleaningSpaceViewModel SaveCleaningSpaceEditModelToDb(CleaningSpaceEditModel spaceEditModel)
         {
             CleaningSpace space;
+            
 
             if (spaceEditModel.Id != 0)
             {
@@ -63,12 +66,18 @@ namespace PresentationLayer.Services
             }
             else
             {
+                List<User> users = new List<User>();
+                foreach(var userId in spaceEditModel.UserIds)
+                {
+                    users.Add(_dataManager.UserRepository.GetUser(userId));
+                }
                 space = new CleaningSpace()
                 {
                     Id = spaceEditModel.Id,
                     Name = spaceEditModel.Name,
                     Description = spaceEditModel.Description,
                     RoomId = spaceEditModel.RoomId,
+                    Users = users,
                 };
             }
             _dataManager.CleaningSpaceRepository.SaveCleaningSpace(space);
@@ -81,11 +90,76 @@ namespace PresentationLayer.Services
             return new CleaningSpaceEditModel();
         }
 
+        public CleaningSpaceApiModel GetApiModelFromDb(int spaceId)
+        {
+            var spaceFromDb = _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(spaceId);
+            var spaceApi = new CleaningSpaceApiModel()
+            {
+                Id = spaceId,
+                Name = spaceFromDb.Name,
+                Description = spaceFromDb.Description,
+                RoomId = spaceFromDb.RoomId,
+                UserIds = spaceFromDb.Users.Select(u => u.Id).ToList(),
+            };
+            return spaceApi;
+        }
+
+        public List<CleaningSpaceApiModel> GetAllCleaningSpacesApiModels()
+        {
+            List<int> spacesFromDbIds = _dataManager.CleaningSpaceRepository.GetAllCleaningSpaces().Select(s=>s.Id).ToList();
+            var spacesApi = new List<CleaningSpaceApiModel>();
+
+            foreach (var spaceId in spacesFromDbIds)
+            {
+                spacesApi.Add(GetApiModelFromDb(spaceId));
+            }
+
+            return spacesApi;
+            
+        }
+
+        public CleaningSpaceApiModel SaveApiModelToDb(CleaningSpaceApiModel apiModel)
+        {
+            CleaningSpace cleaningSpace;
+
+            if (apiModel.Id != 0)
+            {
+                cleaningSpace = _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(apiModel.Id);
+            }
+            else
+            {
+                cleaningSpace = new CleaningSpace();
+            }
+            EnterInformation(ref cleaningSpace, apiModel);
+            _dataManager.CleaningSpaceRepository.SaveCleaningSpace(cleaningSpace);
+            return GetApiModelFromDb(cleaningSpace.Id);
+        }
+
+        public int DeleteCleaningSpace(int spaceId)
+        {
+            var space = _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(spaceId);
+            return _dataManager.CleaningSpaceRepository.DeleteCleaningSpace(space);
+        }
+
         private void EnterInformation(ref CleaningSpace space, CleaningSpaceEditModel editModel)
         {
+            List<User> users = space.Users.ToList();
+            foreach(var userId in editModel.UserIds)
+            {
+                users.Add(_dataManager.UserRepository.GetUser(userId));
+            }
             space.Name= editModel.Name;
             space.Description= editModel.Description;
             space.RoomId= editModel.RoomId;
+            space.Users = users;
+        }
+
+        private void EnterInformation (ref CleaningSpace space, CleaningSpaceApiModel apiModel)
+        {
+            space.Name = apiModel.Name;
+            space.Description= apiModel.Description;
+            space.RoomId=apiModel.RoomId;
+            space.Users=apiModel.UserIds?.Select(sIds=>_dataManager.UserRepository.GetUser(sIds)).ToList() ?? new List<User>();
         }
     }
 }
