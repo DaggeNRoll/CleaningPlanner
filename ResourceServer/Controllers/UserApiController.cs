@@ -32,9 +32,19 @@ namespace ResourceServer.Controllers
         [Route("{userID}")]
         public IActionResult GetUser(int userId)
         {
-            var apiModel = _serviceManager.UserService.GetApiModelFormDb(userId);
+            var apiModel = _serviceManager.UserService.GetApiModelFromDb(userId);
             return Ok(apiModel);
         }
+
+        [HttpGet]
+        [Route("{nickname}")]
+        public IActionResult GetUser(string nickname)
+        {
+            var apiModel=_serviceManager.UserService.GetApiModelFromDb(nickname);
+            return (apiModel != null) ? Ok(apiModel) : NotFound();
+        }
+
+       
 
         [HttpPost]
         public IActionResult SaveUser([FromForm] UserApiModel userApiModel)

@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PresentationLayer.Models;
 using ResourceServer.Models;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace ResourceServer.Controllers
 {
     
-    
+    [Route("account")]
     public class AccountController : Controller
     {
         private UserManager<UserIdentity> _userManager;
@@ -18,12 +20,15 @@ namespace ResourceServer.Controllers
             _signingManager = signInManager;
         }
 
+        [Route("register")]
         [HttpGet]
         public IActionResult Index()
         {
-            return View("SignUp");
+            return View("Register");
         }
 
+        [AllowAnonymous]
+        [Route("register")]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
@@ -40,7 +45,8 @@ namespace ResourceServer.Controllers
                 if (result.Succeeded)
                 {
                     await _signingManager.SignInAsync(user, false);
-                    return RedirectToAction(nameof(UserApiController.CreateUser), nameof(UserApiController), new { registerViewModel = model });
+                    await CreateUserInDb(model);
+                    return RedirectToAction("Index", "UserController", model.NickName);
 
                 }
                 else
@@ -52,6 +58,18 @@ namespace ResourceServer.Controllers
                 }
             }
             return View(model);
+        }
+
+        private async Task<string> CreateUserInDb(RegisterViewModel model)
+        {
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(model);
+            var data = new System.Net.Http.StringContent(json, System.Text.Encoding.UTF8, "application/json");
+            var url = "https://localhost:44372/api/user/register";
+            using var client = new HttpClient();
+            var response = await client.PostAsync(url,data);
+
+            string result = response.Content.ReadAsStringAsync().Result;
+            return result;
         }
     }
 }

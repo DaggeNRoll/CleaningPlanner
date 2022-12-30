@@ -100,6 +100,11 @@ namespace BusinessLayer.Implementations
             user.CleaningSpaces.Add(cleaningSpace);
             _context.SaveChanges();
         }
-       
+
+        public User GetUser(string nickname)
+        {
+            var user = _context.Users.Include(u => u.Room).Include(u => u.CleaningSpaces).Include(u => u.Roles).FirstOrDefault(u => u.NickName == nickname);
+            return user;
+        }
     }
 }

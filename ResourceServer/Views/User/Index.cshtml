@@ -1,0 +1,29 @@
+﻿@using PresentationLayer.Models
+@model UserViewModel
+
+<div>
+    <div>
+        <h1>Информация о пользователе</h1>
+    </div>
+    <div>
+        <div>ФИО: @Model.User.FullName <br /></div>
+        <div>Ник: @Model.User.NickName <br /></div>
+        <div>Email: @Model.User.Email <br /></div>
+    </div>
+        @if (@Model.User.Room != null)
+        {
+           <div>
+               <a asp-action="Index" asp-controller="Room" asp-route-roomId="@Model.User.RoomId">@Model.User.Room.Name</a>
+           </div>
+        }
+        <div>
+            <div><h2>Места уборки</h2></div>
+            <ul>
+            @foreach(var space in @Model.CleaningSpaces)
+            {
+                <li><a asp-action="Index" asp-controller="CleaningSpace" asp-route-spaceId="@space.CleaningSpace.Id"></a></li>
+            }
+            </ul>
+        </div>
+    
+</div>

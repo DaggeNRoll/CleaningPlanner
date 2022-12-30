@@ -158,14 +158,14 @@ namespace PresentationLayer.Services
 
             foreach(var userId in userIds)
             {
-                userApiModels.Add(GetApiModelFormDb(userId));
+                userApiModels.Add(GetApiModelFromDb(userId));
             }
 
             return userApiModels;
 
         }
 
-        public UserApiModel GetApiModelFormDb(int userId)
+        public UserApiModel GetApiModelFromDb(int userId)
         {
             var user = _dataManager.UserRepository.GetUser(userId);
             var userApi = new UserApiModel()
@@ -177,6 +177,23 @@ namespace PresentationLayer.Services
                 CleaningSpaceIds = user.CleaningSpaces.Select(s => s.Id).ToList(),
                 RoleIds = user.Roles.Select(r => r.Id).ToList(),
                 Email=user.Email,
+            };
+
+            return userApi;
+        }
+
+        public UserApiModel GetApiModelFromDb(string nickname)
+        {
+            var user = _dataManager.UserRepository.GetUser(nickname);
+            var userApi = new UserApiModel()
+            {
+                Id = user.Id,
+                FullName = user.FullName,
+                Nickname = user.NickName,
+                RoomId = user.RoomId,
+                CleaningSpaceIds = user.CleaningSpaces.Select(s => s.Id).ToList(),
+                RoleIds = user.Roles.Select(r => r.Id).ToList(),
+                Email = user.Email,
             };
 
             return userApi;
@@ -197,7 +214,7 @@ namespace PresentationLayer.Services
             }
             EditUserInformation(ref user, userApiModel);
             _dataManager.UserRepository.SaveUser(user);
-            return GetApiModelFormDb(user.Id);
+            return GetApiModelFromDb(user.Id);
         }
 
         public int DeleteUser(int userId)
