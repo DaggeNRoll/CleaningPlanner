@@ -182,9 +182,9 @@ namespace PresentationLayer.Services
             return userApi;
         }
 
-        public UserApiModel GetApiModelFromDb(string nickname)
+        public UserApiModel GetApiModelFromDbByNickname(string nickname)
         {
-            var user = _dataManager.UserRepository.GetUser(nickname);
+            var user = _dataManager.UserRepository.GetUserByNickname(nickname);
             var userApi = new UserApiModel()
             {
                 Id = user.Id,
@@ -196,6 +196,22 @@ namespace PresentationLayer.Services
                 Email = user.Email,
             };
 
+            return userApi;
+        }
+
+        public UserApiModel GetApiModelFromDbByEmail(string email)
+        {
+            var user = _dataManager.UserRepository.GetUserByEmail(email);
+            var userApi = new UserApiModel()
+            {
+                Id = user.Id,
+                FullName = user.FullName,
+                Nickname = user.NickName,
+                RoomId = user.RoomId,
+                CleaningSpaceIds = user.CleaningSpaces.Select(s => s.Id).ToList(),
+                RoleIds = user.Roles.Select(r => r.Id).ToList(),
+                Email = user.Email,
+            };
             return userApi;
         }
 
@@ -240,6 +256,17 @@ namespace PresentationLayer.Services
                 Email=registerViewModel.Email,
             };
             return apiModel;
+        }
+
+        public UserViewModel UserApiModelToView(UserApiModel apiModel)
+        {
+            UserViewModel viewModel = new UserViewModel()
+            {
+                User = _dataManager.UserRepository.GetUser(apiModel.Id),
+                Roles = apiModel.RoleIds.Select(r=>_roleService.RoleDbToViewModel(r)).ToList(),
+            };
+
+            return viewModel; 
         }
 
         private void EditUserInformation(ref User user, UserApiModel userApiModel)

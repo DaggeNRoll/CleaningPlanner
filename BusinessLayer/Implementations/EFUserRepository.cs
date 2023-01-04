@@ -101,10 +101,16 @@ namespace BusinessLayer.Implementations
             _context.SaveChanges();
         }
 
-        public User GetUser(string nickname)
+        public User GetUserByNickname(string nickname)
         {
             var user = _context.Users.Include(u => u.Room).Include(u => u.CleaningSpaces).Include(u => u.Roles).FirstOrDefault(u => u.NickName == nickname);
             return user;
+        }
+
+        public User GetUserByEmail(string email)
+        {
+            var user = _context.Users.Include(u => u.Room).Include(u => u.CleaningSpaces).Include(u => u.Roles).FirstOrDefault(u => u.Email == email);
+            return user; 
         }
     }
 }

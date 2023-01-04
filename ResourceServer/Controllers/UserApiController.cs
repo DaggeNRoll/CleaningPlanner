@@ -37,10 +37,18 @@ namespace ResourceServer.Controllers
         }
 
         [HttpGet]
-        [Route("{nickname}")]
-        public IActionResult GetUser(string nickname)
+        [Route("nickname")]
+        public IActionResult GetUserByNickname(string nickname)
         {
-            var apiModel=_serviceManager.UserService.GetApiModelFromDb(nickname);
+            var apiModel=_serviceManager.UserService.GetApiModelFromDbByNickname(nickname);
+            return (apiModel != null) ? Ok(apiModel) : NotFound();
+        }
+
+        [HttpGet]
+        [Route("email")]
+        public IActionResult GetUserByEmail(string email)
+        {
+            var apiModel = _serviceManager.UserService.GetApiModelFromDbByEmail(email);
             return (apiModel != null) ? Ok(apiModel) : NotFound();
         }
 

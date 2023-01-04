@@ -15,15 +15,20 @@
            <div>
                <a asp-action="Index" asp-controller="Room" asp-route-roomId="@Model.User.RoomId">@Model.User.Room.Name</a>
            </div>
-        }
+        
         <div>
             <div><h2>Места уборки</h2></div>
             <ul>
             @foreach(var space in @Model.CleaningSpaces)
             {
-                <li><a asp-action="Index" asp-controller="CleaningSpace" asp-route-spaceId="@space.CleaningSpace.Id"></a></li>
+                <li><a asp-action="Index" asp-controller="CleaningSpace" asp-route-spaceId="@space.CleaningSpace.Id">@space.CleaningSpace.Name</a></li>
             }
             </ul>
         </div>
-    
+    }
+    else
+    {
+        <a asp-action="RoomEditor" asp-controller="Room" asp-route-userId="@Model.User.Id">Создать комнату</a>
+    }
+
 </div>

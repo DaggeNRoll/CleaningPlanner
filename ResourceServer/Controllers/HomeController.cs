@@ -25,8 +25,9 @@ namespace ResourceServer.Controllers
 
         public IActionResult Index()
         {
-            List<UserViewModel> users = _serviceManager.UserService.GetAllUsers();
-            return View(users);
+            return RedirectToAction("Login", "Account");
+            /*List<UserViewModel> users = _serviceManager.UserService.GetAllUsers();
+            return View(users);*/
         }
 
         public IActionResult Privacy()
@@ -39,5 +40,7 @@ namespace ResourceServer.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        
     }
 }

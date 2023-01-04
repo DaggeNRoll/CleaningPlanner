@@ -46,7 +46,7 @@ namespace ResourceServer.Controllers
                 {
                     await _signingManager.SignInAsync(user, false);
                     await CreateUserInDb(model);
-                    return RedirectToAction("Index", "UserController", model.NickName);
+                    return RedirectToAction("Index", "UserController", new {nickname = model.NickName });
 
                 }
                 else
@@ -55,6 +55,40 @@ namespace ResourceServer.Controllers
                     {
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
+                }
+            }
+            return View(model);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult Login(string returnUrl = null)
+        {
+            return View(new LoginViewModel { ReturnUrl = returnUrl });
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signingManager.PasswordSignInAsync(model.Nickname, model.Password, model.IsRememberd, false);
+
+                if (result.Succeeded)
+                {
+                    if(!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
+                    {
+                        return Redirect(model.ReturnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "User", new {nickname = model.Nickname});
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("","Неправильный логин или пароль");
                 }
             }
             return View(model);
