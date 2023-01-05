@@ -1,8 +1,12 @@
 ﻿using BusinessLayer;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PresentationLayer;
 using PresentationLayer.Models;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace ResourceServer.Controllers
 {
@@ -10,16 +14,24 @@ namespace ResourceServer.Controllers
     {
         private DataManager _dataManager;
         private ServiceManager _serviceManager;
+        private HttpClient _httpClient;
+        private string _url;
         public RoomController(DataManager dataManager)
         {
             _dataManager = dataManager;
             _serviceManager = new ServiceManager(dataManager);
+            _httpClient=new HttpClient();
+            _url = "https://localhost:44372/api/room";
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<RoomViewModel> roomList = _serviceManager.RoomService.GetAllRooms();
+            var content = await _httpClient.GetStringAsync(_url);
+
+            List<RoomApiModel> roomApiList = JsonConvert.DeserializeObject<List<RoomApiModel>>(content);
+            List<RoomViewModel> roomList = roomApiList
+                .Select(rApi => _serviceManager.RoomService.GetViewModelFromApi(rApi)).ToList();
             return View(roomList);
         }
 
@@ -43,18 +55,22 @@ namespace ResourceServer.Controllers
         }
 
         [HttpGet]
-        public IActionResult RoomByRoomId(int roomId)
+        public async Task<IActionResult> RoomByRoomId(int roomId)
         {
-            RoomViewModel room = _serviceManager.RoomService.RoomDbToViewModel(roomId);
+            var content = await _httpClient.GetStringAsync(_url+$"/id?roomId={roomId}");
+            RoomApiModel apiModel = JsonConvert.DeserializeObject<RoomApiModel>(content);
+            RoomViewModel room = _serviceManager.RoomService.GetViewModelFromApi(apiModel);
             return View("Index",room);
         }
 
 
         [HttpGet]
-        public IActionResult RoomEditor(int roomId=0, int userId=0)
+        public async Task<IActionResult> RoomEditor(int roomId=0, int userId=0)
         {
-            RoomEditModel editModel = (roomId!=0)? _serviceManager.RoomService.GetRoomEditModel(roomId)
-                : _serviceManager.RoomService.CreateRoomEditModel();
+            
+
+            var content = await _httpClient.GetStringAsync(_url + $"/roomEditor?roomId={roomId}");
+            RoomEditModel roomEditModel=JsonConvert.DeserializeObject<RoomEditModel>(content);
 
 			/*if (roomId!=0)
             {
@@ -66,7 +82,7 @@ namespace ResourceServer.Controllers
                 editModel = null;
                 
             }*/
-			return View("RoomEditor", editModel);
+			return View("RoomEditor", roomEditModel);
 		}
 
         [HttpPost]

@@ -17,7 +17,7 @@
 		</ul>
 	}
 	
-	@Html.ActionLink("Добавить место уборки","AddCLeaningSpace","CleaningSpace", new {roomId = Model.Room.Id,}, new {@classs = "btn btn-default"})
+	@Html.ActionLink("Добавить место уборки","CleaningSpaceEditor","CleaningSpace", new {roomId = Model.Room.Id,}, new {@classs = "btn btn-default"})
 	<br>
 	@Html.ActionLink("Редактировать комнату","RoomEditor","Room", new {roomId = Model.Room.Id,}, new {@classs = "btn btn-default"})
 </div>

@@ -159,6 +159,11 @@ namespace PresentationLayer.Services
             var room = _dataManager.RoomRepository.GetRoomById(roomId);
             return _dataManager.RoomRepository.DeleteRoom(room);
         }
+
+        public RoomViewModel GetViewModelFromApi(RoomApiModel apiModel)
+        {
+            return RoomDbToViewModel(apiModel.Id);
+        }
         
         private void EditRoomInformation(ref Room room, RoomEditModel editModel)
         {

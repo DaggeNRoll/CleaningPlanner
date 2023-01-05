@@ -29,7 +29,7 @@ namespace ResourceServer.Controllers
         }
 
         [HttpGet]
-        [Route("{roomId}")]
+        [Route("id")]
         public IActionResult GetRoom(int roomId)
         {
             var room = _serviceManager.RoomService.RoomDbToViewModel(roomId);
@@ -42,7 +42,17 @@ namespace ResourceServer.Controllers
             return Ok(roomApi);
         }
 
-        [HttpPost("{apiModel}")]
+        [HttpGet]
+        [Route("roomEditor")]
+        public IActionResult GetRoomEditModel(int roomId)
+        {
+            RoomEditModel editModel = (roomId != 0)
+                ? _serviceManager.RoomService.GetRoomEditModel(roomId)
+                : _serviceManager.RoomService.CreateRoomEditModel();
+            return Ok(editModel);
+        }
+
+        [HttpPost("save")]
         public IActionResult SaveRoom([FromForm] RoomApiModel apiModel)
         {
             if (!ModelState.IsValid)
@@ -53,7 +63,7 @@ namespace ResourceServer.Controllers
             return Ok(_serviceManager.RoomService.SaveApiModelToDb(apiModel));
         }
 
-        [HttpDelete("{roomId}")]
+        [HttpDelete("delete/id")]
         public IActionResult DeleteRoom(int roomId)
         {
             int result = _serviceManager.RoomService.DeleteRoom(roomId);

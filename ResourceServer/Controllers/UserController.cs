@@ -37,7 +37,7 @@ namespace ResourceServer.Controllers
         public async Task<IActionResult> Index(string nickname)
         {
             var client = new HttpClient();
-            var url = $"https://localhost:44372/api/userApi/nickname/?nickname={nickname}";
+            var url = $"https://localhost:44372/api/user/nickname/?nickname={nickname}";
             var content = await client.GetStringAsync(url);
             var apiModel = JsonConvert.DeserializeObject<UserApiModel>(content);
             var viewModel = _serviceManager.UserService.UserApiModelToView(apiModel);
