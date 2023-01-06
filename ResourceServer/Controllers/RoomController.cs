@@ -91,5 +91,22 @@ namespace ResourceServer.Controllers
             var viewModel =_serviceManager.RoomService.SaveRoomEditModelToDb(editModel);
             return RedirectToAction("RoomByRoomId", new { roomId = viewModel.Room.Id });
         }
+
+        [HttpGet]
+        [Route("delete/{roomId}/{userId}", Name ="Delete")]
+        public async Task<IActionResult> DeleteRoom(int roomId, int userId)
+        {
+            try
+            {
+                var response = await _httpClient.DeleteAsync(_url + $"/delete/id/{roomId}");
+                response.EnsureSuccessStatusCode();
+                return RedirectToAction("Index", "User", new {userId});
+            }
+            catch(HttpRequestException)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            
+        }
     }
 }

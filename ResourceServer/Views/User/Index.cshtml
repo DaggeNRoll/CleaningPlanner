@@ -14,6 +14,9 @@
         {
            <div>
                <a asp-action="RoomByRoomId" asp-controller="Room" asp-route-roomId="@Model.User.RoomId">@Model.User.Room.Name</a>
+               @Html.RouteLink("Delete", 
+               new {controller = "Room", action = "DeleteRoom", roomId=@Model.User.RoomId, userId=@Model.User.Id},
+               new {@classs = "btn btn-default"})
            </div>
         
         <div>

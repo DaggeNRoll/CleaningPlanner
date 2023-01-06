@@ -63,14 +63,14 @@ namespace ResourceServer.Controllers
             return Ok(_serviceManager.RoomService.SaveApiModelToDb(apiModel));
         }
 
-        [HttpDelete("delete/id")]
+        [HttpDelete("delete/id/{roomId}")]
         public IActionResult DeleteRoom(int roomId)
         {
             int result = _serviceManager.RoomService.DeleteRoom(roomId);
 
             return result switch
             {
-                1 => Ok(),
+                0 => Ok(),
                 _ => BadRequest("Не удалось удалить"),
             };
         }

@@ -48,6 +48,8 @@ namespace PresentationLayer.Services
                 U;
             }*/
 
+            if (user.Roles == null)
+                user.Roles = new List<Role>();
             foreach (var role in user.Roles)
             {
                 roles.Add(_roleService.RoleDbToViewModel(role.Id));

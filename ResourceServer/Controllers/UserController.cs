@@ -49,6 +49,13 @@ namespace ResourceServer.Controllers
 
         }
 
+        [Route("delete/{roomId}/{userId}")]
+        [HttpGet]
+        public IActionResult DeleteRoom(int roomId, int userId)
+        {
+            return RedirectToAction("DeleteRoome", "Room", new {roomId=roomId, userId=userId });
+        } 
+
         
         /*[HttpGet]
         public async Task<IActionResult> IndexByEmail(string email)
