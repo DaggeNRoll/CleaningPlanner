@@ -16,7 +16,7 @@ namespace DataLayer.Entities
         public int? RoomId { get; set; }
         public LoginInformation LoginInformation { get; set; }
         public ICollection<CleaningSpace> CleaningSpaces { get; set; }
-        public ICollection<Role> Roles { get; set; }
+        public Role Role { get; set; }
 
     }
 }

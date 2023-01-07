@@ -13,6 +13,7 @@ namespace DataLayer.Entities
         public ICollection<User> Users { get; set; }
         public ICollection<Role> Roles { get; set; }
         public ICollection<CleaningSpace> CleaningSpaces { get; set; }
+        public int RoomAdminId { get; set; }
 
     }
 }

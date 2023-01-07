@@ -16,6 +16,7 @@
 		
 		<input name="Id" type="hidden" value="@Model.Id"/>
 		<input name="Name" value="@Model.Name"/>
+		<input asp-for="CreatorId" type="hidden" value=@Model.CreatorId />
 		<input type="submit"/>
 	</form>
 </div>

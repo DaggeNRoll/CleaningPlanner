@@ -74,13 +74,10 @@ D:\repos\CleaningPlanner\ResourceServer\bin\Debug\net5.0\MySqlConnector.dll
 D:\repos\CleaningPlanner\ResourceServer\bin\Debug\net5.0\Pomelo.EntityFrameworkCore.MySql.dll
 D:\repos\CleaningPlanner\ResourceServer\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
 D:\repos\CleaningPlanner\ResourceServer\bin\Debug\net5.0\BusinessLayer.dll
-D:\repos\CleaningPlanner\ResourceServer\bin\Debug\net5.0\Com.dll
 D:\repos\CleaningPlanner\ResourceServer\bin\Debug\net5.0\DataLayer.dll
 D:\repos\CleaningPlanner\ResourceServer\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 D:\repos\CleaningPlanner\ResourceServer\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
 D:\repos\CleaningPlanner\ResourceServer\bin\Debug\net5.0\BusinessLayer.pdb
-D:\repos\CleaningPlanner\ResourceServer\bin\Debug\net5.0\Com.pdb
-D:\repos\CleaningPlanner\ResourceServer\bin\Debug\net5.0\Com.dll.config
 D:\repos\CleaningPlanner\ResourceServer\bin\Debug\net5.0\DataLayer.pdb
 D:\repos\CleaningPlanner\ResourceServer\obj\Debug\net5.0\ResourceServer.csproj.AssemblyReference.cache
 D:\repos\CleaningPlanner\ResourceServer\obj\Debug\net5.0\ResourceServer.GeneratedMSBuildEditorConfig.editorconfig

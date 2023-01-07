@@ -29,7 +29,7 @@ namespace ResourceServer.Controllers
         }
 
         [HttpGet]
-        [Route("{userID}")]
+        [Route("id/{userID}")]
         public IActionResult GetUser(int userId)
         {
             var apiModel = _serviceManager.UserService.GetApiModelFromDb(userId);
@@ -55,7 +55,7 @@ namespace ResourceServer.Controllers
        
 
         [HttpPost]
-        public IActionResult SaveUser([FromForm] UserApiModel userApiModel)
+        public IActionResult SaveUser(UserApiModel userApiModel)
         {
             var apiModelFromDb = _serviceManager.UserService.SaveApiModelToDb(userApiModel);
             return Ok(apiModelFromDb);

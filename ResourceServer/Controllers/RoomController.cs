@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using DataLayer.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PresentationLayer;
@@ -6,6 +7,7 @@ using PresentationLayer.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ResourceServer.Controllers
@@ -69,8 +71,9 @@ namespace ResourceServer.Controllers
         {
             
 
-            var content = await _httpClient.GetStringAsync(_url + $"/roomEditor?roomId={roomId}");
+            var content = await _httpClient.GetStringAsync(_url + $"/roomEditor?roomId={roomId}&userId={userId}");
             RoomEditModel roomEditModel=JsonConvert.DeserializeObject<RoomEditModel>(content);
+            roomEditModel.CreatorId = userId;
 
 			/*if (roomId!=0)
             {
@@ -86,10 +89,45 @@ namespace ResourceServer.Controllers
 		}
 
         [HttpPost]
-        public IActionResult SaveRoom(RoomEditModel editModel)
+        public async Task<IActionResult> SaveRoom(RoomEditModel editModel)
         {
-            var viewModel =_serviceManager.RoomService.SaveRoomEditModelToDb(editModel);
-            return RedirectToAction("RoomByRoomId", new { roomId = viewModel.Room.Id });
+            RoomApiModel apiModel = new RoomApiModel
+            {
+                Id = editModel.Id,
+                Name = editModel.Name,
+            };
+            var json = JsonConvert.SerializeObject(apiModel);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync(_url + "/save", data);
+            string result = await response.Content.ReadAsStringAsync();
+            apiModel = JsonConvert.DeserializeObject<RoomApiModel>(result);
+
+            var content = await _httpClient.GetStringAsync($"https://localhost:44372/api/user/id/{editModel.CreatorId}");
+            var userApiModel = JsonConvert.DeserializeObject<UserApiModel>(content);
+            userApiModel.RoomId=apiModel.Id;
+            json = JsonConvert.SerializeObject(userApiModel);
+            data = new StringContent(json, Encoding.UTF8, "application/json");
+            response = await _httpClient.PostAsync("https://localhost:44372/api/user",data);
+            result = await response.Content.ReadAsStringAsync();
+            userApiModel = JsonConvert.DeserializeObject<UserApiModel>(result);
+
+            RoleApiModel roleApiModel = new RoleApiModel
+            {
+                Name = RoleType.Admin.ToString(),
+                UserId = userApiModel.Id,
+                RoomId = apiModel.Id,
+            };
+            json = JsonConvert.SerializeObject(roleApiModel);
+            data = new StringContent(json, Encoding.UTF8, "application/json");
+            response = await _httpClient.PostAsync("https://localhost:44372/api/role", data);
+
+
+
+            /*if (editModel.Id == 0)
+                apiModel.UserIds = new List<int> { editModel.CreatorId };*/
+
+            //var viewModel =_serviceManager.RoomService.SaveRoomEditModelToDb(editModel);
+            return RedirectToAction("Index", "User", new { userId = userApiModel.Id });
         }
 
         [HttpGet]

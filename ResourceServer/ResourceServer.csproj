@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
-    <ProjectReference Include="..\Com\Com.csproj" />
     <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
     <ProjectReference Include="..\PresentationLayer\PresentationLayer.csproj" />
   </ItemGroup>

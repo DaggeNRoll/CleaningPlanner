@@ -44,16 +44,17 @@ namespace ResourceServer.Controllers
 
         [HttpGet]
         [Route("roomEditor")]
-        public IActionResult GetRoomEditModel(int roomId)
+        public IActionResult GetRoomEditModel(int roomId, int userId)
         {
             RoomEditModel editModel = (roomId != 0)
                 ? _serviceManager.RoomService.GetRoomEditModel(roomId)
                 : _serviceManager.RoomService.CreateRoomEditModel();
+            
             return Ok(editModel);
         }
 
         [HttpPost("save")]
-        public IActionResult SaveRoom([FromForm] RoomApiModel apiModel)
+        public IActionResult SaveRoom(RoomApiModel apiModel)
         {
             if (!ModelState.IsValid)
             {

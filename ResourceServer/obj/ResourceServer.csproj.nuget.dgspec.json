@@ -62,21 +62,6 @@
         }
       }
     },
-    "D:\\repos\\CleaningPlanner\\Com\\Com.csproj": {
-      "restore": {
-        "projectUniqueName": "D:\\repos\\CleaningPlanner\\Com\\Com.csproj",
-        "projectName": "Com",
-        "projectPath": "D:\\repos\\CleaningPlanner\\Com\\Com.csproj",
-        "frameworks": {
-          "net48": {
-            "projectReferences": {}
-          }
-        }
-      },
-      "frameworks": {
-        "net48": {}
-      }
-    },
     "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -234,9 +219,6 @@
             "projectReferences": {
               "D:\\repos\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj": {
                 "projectPath": "D:\\repos\\CleaningPlanner\\BusinessLayer\\BusinessLayer.csproj"
-              },
-              "D:\\repos\\CleaningPlanner\\Com\\Com.csproj": {
-                "projectPath": "D:\\repos\\CleaningPlanner\\Com\\Com.csproj"
               },
               "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj": {
                 "projectPath": "D:\\repos\\CleaningPlanner\\DataLayer\\DataLayer.csproj"

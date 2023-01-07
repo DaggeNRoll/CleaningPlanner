@@ -29,33 +29,12 @@ namespace PresentationLayer.Services
             var user = _dataManager.UserRepository.GetUser(userId);
 
 
-            /*var rooms = _dataManager.RoomRepository.GetRoomsByUser(userId);
-            var cleaningSpaces = _dataManager.CleaningSpaceRepository.GetCleaningSpacesByUser(userId);
-            var roles=_dataManager.RoleRepository.GetRolesByUser(userId);*/
+            var role = _roleService.RoleDbToViewModelByUser(userId);
+          
 
+            
 
-            /*var cleaningSpaces = new List<CleaningSpaceViewModel>();*/
-            var roles = new List<RoleViewModel>();
-
-
-            /*foreach (var item in user.Rooms)
-            {
-                rooms.Add(_roomService.RoomDbToViewModel(item.Id));
-            }*/
-
-            /*foreach (var cleaningSpace in user.CleaningSpaces)
-            {
-                U;
-            }*/
-
-            if (user.Roles == null)
-                user.Roles = new List<Role>();
-            foreach (var role in user.Roles)
-            {
-                roles.Add(_roleService.RoleDbToViewModel(role.Id));
-            }
-
-            return new UserViewModel() { User = user, Roles = roles};
+            return new UserViewModel() { User = user, Role = role};
         }
 
         public UserEditModel GetUserEditModel(int userId)
@@ -177,7 +156,7 @@ namespace PresentationLayer.Services
                 Nickname = user.NickName,
                 RoomId = user.RoomId,
                 CleaningSpaceIds = user.CleaningSpaces.Select(s => s.Id).ToList(),
-                RoleIds = user.Roles.Select(r => r.Id).ToList(),
+                
                 Email=user.Email,
             };
 
@@ -194,7 +173,7 @@ namespace PresentationLayer.Services
                 Nickname = user.NickName,
                 RoomId = user.RoomId,
                 CleaningSpaceIds = user.CleaningSpaces.Select(s => s.Id).ToList(),
-                RoleIds = user.Roles.Select(r => r.Id).ToList(),
+               
                 Email = user.Email,
             };
 
@@ -211,7 +190,7 @@ namespace PresentationLayer.Services
                 Nickname = user.NickName,
                 RoomId = user.RoomId,
                 CleaningSpaceIds = user.CleaningSpaces.Select(s => s.Id).ToList(),
-                RoleIds = user.Roles.Select(r => r.Id).ToList(),
+                
                 Email = user.Email,
             };
             return userApi;
@@ -265,7 +244,7 @@ namespace PresentationLayer.Services
             UserViewModel viewModel = new UserViewModel()
             {
                 User = _dataManager.UserRepository.GetUser(apiModel.Id),
-                Roles = apiModel.RoleIds.Select(r=>_roleService.RoleDbToViewModel(r)).ToList(),
+                
             };
 
             return viewModel; 
@@ -277,7 +256,7 @@ namespace PresentationLayer.Services
             user.NickName = userApiModel.Nickname;
             user.RoomId= userApiModel.RoomId;
             user.CleaningSpaces = userApiModel.CleaningSpaceIds.Select(cs => _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(cs)).ToList();
-            user.Roles=userApiModel.RoleIds?.Select(r=>_dataManager.RoleRepository.GetRole(r)).ToList() ?? new List<Role>();
+           
             user.Email=userApiModel.Email;
         }
     }

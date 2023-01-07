@@ -87,9 +87,9 @@ namespace PresentationLayer.Services
             else
             {
                 room = new Room()
-                {
-                    
+                {         
                     Name = editModel.Name,
+                    Users=new List<User>() { _dataManager.UserRepository.GetUser(editModel.CreatorId)}
                 };
             }
             _dataManager.RoomRepository.SaveRoom(room);
@@ -173,7 +173,7 @@ namespace PresentationLayer.Services
         private void EditRoomInformation(ref Room room, RoomApiModel apiModel)
         {
             room.Name = apiModel.Name;
-            room.Users = apiModel.UserIds.Select(ui => _dataManager.UserRepository.GetUser(ui)).ToList();
+            room.Users = apiModel.UserIds?.Select(ui => _dataManager.UserRepository.GetUser(ui)).ToList() ?? new List<User>();
             room.Roles=apiModel.RoleIds?.Select(ri=>_dataManager.RoleRepository.GetRole(ri)).ToList() ?? new List<Role>();
             room.CleaningSpaces = apiModel.CleaningSpaceIds?.Select(si => _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(si)).ToList() ?? new List<CleaningSpace>();
         }

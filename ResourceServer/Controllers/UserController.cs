@@ -14,21 +14,30 @@ namespace ResourceServer.Controllers
     {
         private DataManager _dataManager;
         private ServiceManager _serviceManager;
-        private string url;
+        private string _url;
+        private HttpClient _httpClient;
 
         
         public UserController(DataManager dataManager)
         {
             _dataManager = dataManager;
             _serviceManager = new ServiceManager(dataManager);
-            url = "https://localhost:44372/api/user";
+            _httpClient = new HttpClient();
+            _url = "https://localhost:44372/api/user";
         }
 
         [Route("{userId}")]
         [HttpGet]
-        public IActionResult Index(int userId)
+        public async Task<IActionResult> Index(int userId)
         {
-            UserViewModel viewModel = _serviceManager.UserService.UserDbModelToView(userId);
+            var content = await _httpClient.GetStringAsync(_url+$"/id/{userId}");
+            var apiModel = JsonConvert.DeserializeObject<UserApiModel>(content);
+            var viewModel = _serviceManager.UserService.UserApiModelToView(apiModel);
+            viewModel.CleaningSpaces = apiModel.CleaningSpaceIds
+                .Select(s => _serviceManager.CleaningSpaceService
+                .CleaningSpaceDbToViewModel(s))
+                .ToList();
+            
             return View(viewModel);
         }
 
@@ -36,9 +45,9 @@ namespace ResourceServer.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(string nickname)
         {
-            var client = new HttpClient();
-            var url = $"https://localhost:44372/api/user/nickname/?nickname={nickname}";
-            var content = await client.GetStringAsync(url);
+            
+            //var url = $"https://localhost:44372/api/user/nickname/?nickname={nickname}";
+            var content = await _httpClient.GetStringAsync(_url+$"/nickname/?nickname={nickname}");
             var apiModel = JsonConvert.DeserializeObject<UserApiModel>(content);
             var viewModel = _serviceManager.UserService.UserApiModelToView(apiModel);
             viewModel.CleaningSpaces = apiModel.CleaningSpaceIds
@@ -49,27 +58,11 @@ namespace ResourceServer.Controllers
 
         }
 
-        [Route("delete/{roomId}/{userId}")]
+        /*[Route("delete/{roomId}/{userId}")]
         [HttpGet]
         public IActionResult DeleteRoom(int roomId, int userId)
         {
             return RedirectToAction("DeleteRoome", "Room", new {roomId=roomId, userId=userId });
-        } 
-
-        
-        /*[HttpGet]
-        public async Task<IActionResult> IndexByEmail(string email)
-        {
-            var client = new HttpClient();
-            var url = $"https://localhost:44372/api/user/byEmail/{email}";
-            var content=await client.GetStringAsync(url);
-            var apiModel=JsonConvert.DeserializeObject<UserApiModel>(content);
-            var viewModel = _serviceManager.UserService.UserApiModelToView(apiModel);
-            viewModel.CleaningSpaces = apiModel.CleaningSpaceIds
-                .Select(s=>_serviceManager.CleaningSpaceService
-                .CleaningSpaceDbToViewModel(s)).ToList();
-            return View("Index",viewModel);
-
-        }*/
+        }*/ 
     }
 }

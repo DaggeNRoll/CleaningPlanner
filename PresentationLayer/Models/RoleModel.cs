@@ -22,4 +22,9 @@ namespace PresentationLayer.Models
         public int UserId { get; set; }
         public int RoomId { get; set; }
     }
+
+    public class RoleApiModel : RoleEditModel
+    {
+
+    }
 }

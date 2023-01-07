@@ -13,7 +13,8 @@ namespace PresentationLayer.Models
         public User User { get; set; }
         //public Room Room { get; set; }
         public List<CleaningSpaceViewModel> CleaningSpaces { get; set; }
-        public List<RoleViewModel> Roles { get; set; }
+
+        public RoleViewModel Role { get; set; }
 
     }
 
@@ -39,6 +40,6 @@ namespace PresentationLayer.Models
         public int? RoomId { get; set; }
 
         public List<int> CleaningSpaceIds { get; set; }
-        public List<int> RoleIds { get; set; }
+        
     }
 }
