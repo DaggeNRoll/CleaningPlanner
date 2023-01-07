@@ -31,6 +31,19 @@ namespace ResourceServer.Controllers
             };
         }
 
+        [HttpGet]
+        [Route("user/{userId}")]
+        public IActionResult GetRoleByUser(int userId)
+        {
+            var role = _serviceManager.RoleService.GetApiModelFromDbByUser(userId);
+
+            return role switch
+            {
+                null => NotFound("Запись не найдена"),
+                _ => Ok(role)
+            };
+        }
+
         [HttpPost]
         public IActionResult RoleEditor(RoleApiModel roleApiModel)
         {

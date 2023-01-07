@@ -29,7 +29,7 @@ namespace ResourceServer.Controllers
         }
 
         [HttpGet]
-        [Route("id")]
+        [Route("id/{roomId}")]
         public IActionResult GetRoom(int roomId)
         {
             var room = _serviceManager.RoomService.RoomDbToViewModel(roomId);

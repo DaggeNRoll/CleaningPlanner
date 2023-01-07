@@ -94,6 +94,20 @@ namespace PresentationLayer.Services
             return roleApiModel;
         }
 
+        public RoleApiModel GetApiModelFromDbByUser(int userId)
+        {
+            Role role = _dataManager.RoleRepository.GetRoleByUser(userId);
+            RoleApiModel roleApiModel = new RoleApiModel
+            {
+                Id = role.Id,
+                Name = role.Name,
+                UserId = role.UserId,
+                RoomId = role.RoomId,
+            };
+
+            return roleApiModel;
+        }
+
         public RoleApiModel SaveApiModelToDb(RoleApiModel apiModel)
         {
             Role role;

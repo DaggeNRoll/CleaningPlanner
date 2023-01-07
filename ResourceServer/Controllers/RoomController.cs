@@ -42,8 +42,6 @@ namespace ResourceServer.Controllers
         {
             var room=_serviceManager.RoomService.GetRoomByUser(userId);
             
-            
-
             if (room != null) 
             {
                 RoomViewModel viewModel = _serviceManager.RoomService.RoomDbToViewModel(room.Id);
@@ -52,14 +50,13 @@ namespace ResourceServer.Controllers
             else
             {
                 return RedirectToAction("RoomEditor");
-            }
-            
+            } 
         }
 
         [HttpGet]
         public async Task<IActionResult> RoomByRoomId(int roomId)
         {
-            var content = await _httpClient.GetStringAsync(_url+$"/id?roomId={roomId}");
+            var content = await _httpClient.GetStringAsync(_url+$"/id/{roomId}");
             RoomApiModel apiModel = JsonConvert.DeserializeObject<RoomApiModel>(content);
             RoomViewModel room = _serviceManager.RoomService.GetViewModelFromApi(apiModel);
             return View("Index",room);
@@ -68,25 +65,24 @@ namespace ResourceServer.Controllers
 
         [HttpGet]
         public async Task<IActionResult> RoomEditor(int roomId=0, int userId=0)
-        {
-            
-
+        {            
             var content = await _httpClient.GetStringAsync(_url + $"/roomEditor?roomId={roomId}&userId={userId}");
             RoomEditModel roomEditModel=JsonConvert.DeserializeObject<RoomEditModel>(content);
-            roomEditModel.CreatorId = userId;
+            roomEditModel.RoomAdminId = userId;
 
-			/*if (roomId!=0)
-            {
-                editModel = _serviceManager.RoomService.GetRoomEditModel(roomId);
-                
-            }
-            else
-            {
-                editModel = null;
-                
-            }*/
 			return View("RoomEditor", roomEditModel);
 		}
+
+        [HttpGet]
+        [Route("editor/users/{roomId}")]
+        public async Task<IActionResult> UsersEditor(int roomId)
+        {
+            var content = await _httpClient.GetStringAsync(_url + $"/id/{roomId}");
+            RoomApiModel apiModel = JsonConvert.DeserializeObject<RoomApiModel>(content);
+            RoomViewModel viewModel = _serviceManager.RoomService.GetViewModelFromApi(apiModel);
+
+            return View("UsersEditor", viewModel);
+        }
 
         [HttpPost]
         public async Task<IActionResult> SaveRoom(RoomEditModel editModel)
@@ -95,6 +91,7 @@ namespace ResourceServer.Controllers
             {
                 Id = editModel.Id,
                 Name = editModel.Name,
+                RoomAdminId = editModel.RoomAdminId,
             };
             var json = JsonConvert.SerializeObject(apiModel);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
@@ -102,7 +99,7 @@ namespace ResourceServer.Controllers
             string result = await response.Content.ReadAsStringAsync();
             apiModel = JsonConvert.DeserializeObject<RoomApiModel>(result);
 
-            var content = await _httpClient.GetStringAsync($"https://localhost:44372/api/user/id/{editModel.CreatorId}");
+            var content = await _httpClient.GetStringAsync($"https://localhost:44372/api/user/id/{editModel.RoomAdminId}");
             var userApiModel = JsonConvert.DeserializeObject<UserApiModel>(content);
             userApiModel.RoomId=apiModel.Id;
             json = JsonConvert.SerializeObject(userApiModel);
@@ -121,12 +118,6 @@ namespace ResourceServer.Controllers
             data = new StringContent(json, Encoding.UTF8, "application/json");
             response = await _httpClient.PostAsync("https://localhost:44372/api/role", data);
 
-
-
-            /*if (editModel.Id == 0)
-                apiModel.UserIds = new List<int> { editModel.CreatorId };*/
-
-            //var viewModel =_serviceManager.RoomService.SaveRoomEditModelToDb(editModel);
             return RedirectToAction("Index", "User", new { userId = userApiModel.Id });
         }
 
