@@ -14,8 +14,11 @@
                 <select size="3" asp-for="SelectedUserId">
                     <option disabled>Выберите пользователя</option>
                         @foreach(var user in Model.Users){
+                        if (user.User.RoomId == Model.CLeaningSpace.CleaningSpace.RoomId)
+                        {
                             <option value="@user.User.Id">@user.User.NickName</option>
                         }
+                    }
                 </select>
                
                 <input type="submit" />

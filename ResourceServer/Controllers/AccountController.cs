@@ -27,7 +27,7 @@ namespace ResourceServer.Controllers
             return View("Register");
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [Route("register")]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
@@ -60,14 +60,14 @@ namespace ResourceServer.Controllers
             return View(model);
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet]
         public IActionResult Login(string returnUrl = null)
         {
             return View(new LoginViewModel { ReturnUrl = returnUrl });
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -92,6 +92,14 @@ namespace ResourceServer.Controllers
                 }
             }
             return View(model);
+        }
+
+        [Route("logout")]
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signingManager.SignOutAsync();
+            return RedirectToAction("Index","Home");
         }
 
         private async Task<string> CreateUserInDb(RegisterViewModel model)
