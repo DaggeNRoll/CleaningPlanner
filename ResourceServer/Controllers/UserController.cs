@@ -45,6 +45,7 @@ namespace ResourceServer.Controllers
 
 
         [HttpGet]
+        
         public async Task<IActionResult> Index(string nickname)
         {
 

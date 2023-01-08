@@ -1,0 +1,28 @@
+﻿@using PresentationLayer.Models
+@model PersonRoomModel
+
+<div>
+    <div>
+        <h1>Добавить пользователя</h1>
+    </div>
+    <div>
+        <form asp-action="AddUserPost" asp-controller="Room" method="post">
+            <input type="hidden" asp-for="RoomId" value="@Model.RoomId" />
+            <div>
+                <select size="3" asp-for="SelectedUserId">
+                    <option disabled>Выберите пользователя</option>
+                    @foreach(var user in Model.Users)
+                    {
+                        if (user.RoomId == null)
+                        {
+                            <option value="@user.Id">@user.Nickname</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div>
+                <input type="submit" />
+            </div>
+        </form>
+    </div>
+</div>

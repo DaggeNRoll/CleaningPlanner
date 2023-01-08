@@ -487,3 +487,4 @@ D:\repos\CleaningPlanner\ResourceServer\obj\Debug\net5.0\Razor\Views\Account\Log
 D:\repos\CleaningPlanner\ResourceServer\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
 D:\repos\CleaningPlanner\ResourceServer\obj\Debug\net5.0\Razor\Views\CleaningSpace\AddPerson.cshtml.g.cs
 D:\repos\CleaningPlanner\ResourceServer\obj\Debug\net5.0\Razor\Views\Room\UsersEditor.cshtml.g.cs
+D:\repos\CleaningPlanner\ResourceServer\obj\Debug\net5.0\Razor\Views\Room\AddPersonToRoom.cshtml.g.cs

@@ -46,7 +46,7 @@ namespace ResourceServer.Controllers
                 {
                     await _signingManager.SignInAsync(user, false);
                     await CreateUserInDb(model);
-                    return RedirectToAction("Index", "UserController", new {nickname = model.NickName });
+                    return RedirectToAction("Index", "User", new {nickname = model.NickName });
 
                 }
                 else
