@@ -80,6 +80,10 @@ namespace ResourceServer.Controllers
             {
                 return RedirectToAction("DeleteRoom", "Room", new { roomId, userId });
             }
+
+            json = JsonConvert.SerializeObject(roleApiModel);
+            data = new StringContent(json, Encoding.UTF8, "application/json");
+            await _httpClient.DeleteAsync($"https://localhost:44372/api/role/{roleApiModel.Id}");
             
 
             return RedirectToAction("UsersEditor", "Room", new { roomId });
