@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\DataLayer"
+    "\\DataLayer",
+    "\\ResourceServer",
+    "\\ResourceServer\\Controllers"
   ],
-  "SelectedNode": "\\DataLayer\\DSDbContext.cs",
+  "SelectedNode": "\\DormSchedule.sln",
   "PreviewInSolutionExplorer": false
 }
