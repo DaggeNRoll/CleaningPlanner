@@ -6,12 +6,12 @@ namespace DataLayer.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql(
+            /*migrationBuilder.Sql(
             @"ALTER TABLE Users
                 ADD FOREIGN KEY (RoomId)
                 REFERENCES Room (Id)
                 ON DELETE CASCADE ON UPDATE CASCADE
-            ");
+            ");*/
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

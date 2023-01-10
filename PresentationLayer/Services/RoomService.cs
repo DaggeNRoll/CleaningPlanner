@@ -57,9 +57,11 @@ namespace PresentationLayer.Services
 					cleaningSpaces.Add(_cleaningSpaceService.CleaningSpaceDbToViewModel(cleaningSpace.Id));
 				}
 			}
+
+            
             
 
-            return new RoomViewModel() { Room = room, Users = users, Roles = roles, CleaningSpaces = cleaningSpaces };
+            return new RoomViewModel() { Room = room, Users = users, Roles = roles, CleaningSpaces = cleaningSpaces,  };
         }
 
         public RoomEditModel GetRoomEditModel(int roomId)
@@ -70,6 +72,7 @@ namespace PresentationLayer.Services
             {
                 Id=room.Id,
                 Name=room.Name,
+                RoomAdminId=room.RoomAdminId,
             };
 
             return editModel;
@@ -87,9 +90,9 @@ namespace PresentationLayer.Services
             else
             {
                 room = new Room()
-                {
-                    
+                {         
                     Name = editModel.Name,
+                    Users=new List<User>() { _dataManager.UserRepository.GetUser(editModel.CreatorId)}
                 };
             }
             _dataManager.RoomRepository.SaveRoom(room);
@@ -131,6 +134,7 @@ namespace PresentationLayer.Services
                 UserIds = viewModel.Room.Users?.Select(u => u.Id).ToList() ?? new List<int>(),
                 RoleIds = viewModel.Room.Roles?.Select(r => r.Id).ToList() ?? new List<int>(),
                 CleaningSpaceIds = viewModel.Room.CleaningSpaces.Select(c => c.Id).ToList(),
+                RoomAdminId=viewModel.Room.RoomAdminId,
             };
             return apiModel;
         }
@@ -159,6 +163,11 @@ namespace PresentationLayer.Services
             var room = _dataManager.RoomRepository.GetRoomById(roomId);
             return _dataManager.RoomRepository.DeleteRoom(room);
         }
+
+        public RoomViewModel GetViewModelFromApi(RoomApiModel apiModel)
+        {
+            return RoomDbToViewModel(apiModel.Id);
+        }
         
         private void EditRoomInformation(ref Room room, RoomEditModel editModel)
         {
@@ -168,9 +177,10 @@ namespace PresentationLayer.Services
         private void EditRoomInformation(ref Room room, RoomApiModel apiModel)
         {
             room.Name = apiModel.Name;
-            room.Users = apiModel.UserIds.Select(ui => _dataManager.UserRepository.GetUser(ui)).ToList();
+            room.Users = apiModel.UserIds?.Select(ui => _dataManager.UserRepository.GetUser(ui)).ToList() ?? new List<User>();
             room.Roles=apiModel.RoleIds?.Select(ri=>_dataManager.RoleRepository.GetRole(ri)).ToList() ?? new List<Role>();
             room.CleaningSpaces = apiModel.CleaningSpaceIds?.Select(si => _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(si)).ToList() ?? new List<CleaningSpace>();
+            room.RoomAdminId=apiModel.RoomAdminId;
         }
     }
 }

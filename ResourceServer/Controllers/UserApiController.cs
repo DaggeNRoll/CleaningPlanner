@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PresentationLayer;
 using PresentationLayer.Models;
+
 using System.Linq;
 
 namespace ResourceServer.Controllers
@@ -28,17 +29,43 @@ namespace ResourceServer.Controllers
         }
 
         [HttpGet]
-        [Route("{userID}")]
+        [Route("id/{userID}")]
         public IActionResult GetUser(int userId)
         {
-            var apiModel = _serviceManager.UserService.GetApiModelFormDb(userId);
+            var apiModel = _serviceManager.UserService.GetApiModelFromDb(userId);
             return Ok(apiModel);
         }
 
+        [HttpGet]
+        [Route("nickname")]
+        public IActionResult GetUserByNickname(string nickname)
+        {
+            var apiModel=_serviceManager.UserService.GetApiModelFromDbByNickname(nickname);
+            return (apiModel != null) ? Ok(apiModel) : NotFound();
+        }
+
+        [HttpGet]
+        [Route("email")]
+        public IActionResult GetUserByEmail(string email)
+        {
+            var apiModel = _serviceManager.UserService.GetApiModelFromDbByEmail(email);
+            return (apiModel != null) ? Ok(apiModel) : NotFound();
+        }
+
+       
+
         [HttpPost]
-        public IActionResult SaveUser([FromForm] UserApiModel userApiModel)
+        public IActionResult SaveUser(UserApiModel userApiModel)
         {
             var apiModelFromDb = _serviceManager.UserService.SaveApiModelToDb(userApiModel);
+            return Ok(apiModelFromDb);
+        }
+
+        [HttpPost]
+        [Route("register")]
+        public IActionResult CreateUser(RegisterViewModel registerViewModel)
+        {
+            var apiModelFromDb = _serviceManager.UserService.CreateUser(registerViewModel);
             return Ok(apiModelFromDb);
         }
 

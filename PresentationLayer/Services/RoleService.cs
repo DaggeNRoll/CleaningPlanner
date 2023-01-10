@@ -32,6 +32,16 @@ namespace PresentationLayer.Services
             };
         }
 
+        public RoleViewModel RoleDbToViewModelByUser(int userId)
+        {
+            var role = _dataManager.RoleRepository.GetRoleByUser(userId);
+
+            return new RoleViewModel()
+            {
+                Role = role,
+            };
+        }
+
         public RoleEditModel GetRoleEditModel(int roleId)
         {
             var roleFromDb = _dataManager.RoleRepository.GetRole(roleId);
@@ -68,6 +78,65 @@ namespace PresentationLayer.Services
             _dataManager.RoleRepository.SaveRole(role);
 
             return RoleDbToViewModel(role.Id);
+        }
+
+        public RoleApiModel GetApiModelFromDb(int id)
+        {
+            Role role = _dataManager.RoleRepository.GetRole(id);
+            RoleApiModel roleApiModel = new RoleApiModel
+            {
+                Id=role.Id,
+                Name=role.Name,
+                UserId=role.UserId,
+                RoomId=role.RoomId,
+            };
+
+            return roleApiModel;
+        }
+
+        public RoleApiModel GetApiModelFromDbByUser(int userId)
+        {
+            Role role = _dataManager.RoleRepository.GetRoleByUser(userId);
+            RoleApiModel roleApiModel = new RoleApiModel
+            {
+                Id = role.Id,
+                Name = role.Name,
+                UserId = role.UserId,
+                RoomId = role.RoomId,
+            };
+
+            return roleApiModel;
+        }
+
+        public RoleApiModel SaveApiModelToDb(RoleApiModel apiModel)
+        {
+            Role role;
+            if(apiModel.Id != 0)
+            {
+                role = _dataManager.RoleRepository.GetRole(apiModel.Id);
+            }
+            else
+            {
+                role = new Role();
+            }
+            EnterInformation(ref role, apiModel);
+            _dataManager.RoleRepository.SaveRole(role);
+            apiModel.Id = role.Id;
+            return apiModel;
+        }
+
+        public int DeleteRole(int id)
+        {
+            int result = _dataManager.RoleRepository.DeleteRole(id);
+
+            return result;
+        }
+
+        private void EnterInformation(ref Role role, RoleApiModel roleApiModel)
+        {
+            role.Name = roleApiModel.Name;
+            role.UserId = roleApiModel.UserId;
+            role.RoomId = roleApiModel.RoomId;
         }
     }
 }

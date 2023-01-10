@@ -17,6 +17,7 @@
 			}
 		}
 	</ul>
+	@Html.ActionLink("Назнвачить ответственного", "AddPerson", "CleaningSpace", new{cleaningSpaceId=Model.CleaningSpace.Id,}, new {@classs = "btn btn-default"})
 </div>
 <div>
 	@Html.ActionLink("Редактировать","CleaningSpaceEditor","CleaningSpace", new {cleaningSpaceId = Model.CleaningSpace.Id,}, new {@classs = "btn btn-default"})

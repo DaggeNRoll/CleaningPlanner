@@ -1,0 +1,34 @@
+﻿@using PresentationLayer.Models
+@model LoginViewModel
+
+<div>
+    <div><h1>Войти</h1></div>
+
+    <div>
+        <form method="post" asp-controller="Account" asp-action="login" asp-route-returnUrl="@Model.ReturnUrl">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div>
+                <label asp-for="Nickname"></label><br />
+                <input asp-for="Nickname" />
+                <span asp-validation-for="Nickname"></span>
+            </div>
+            <div>
+                <label asp-for="Password"></label><br />
+                <input asp-for="Password" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div>
+                <label asp-for="IsRememberd"></label><br />
+                <input asp-for="IsRememberd" />
+            </div>
+            <div>
+                <input type="submit" value="Войти" />
+            </div>
+        </form>
+    </div>
+    <div>
+        @Html.ActionLink("Создать аккаует","Register","Account",
+        null, 
+        new {@classs = "btn btn-default"})
+    </div>
+</div>

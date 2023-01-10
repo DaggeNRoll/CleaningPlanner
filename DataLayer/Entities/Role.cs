@@ -16,4 +16,10 @@ namespace DataLayer.Entities
         public Room Room { get; set; }
         public int RoomId { get; set; }
     }
+
+    public enum RoleType
+    {
+        Admin,
+        User
+    }
 }

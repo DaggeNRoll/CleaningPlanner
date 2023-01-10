@@ -9,10 +9,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ResourceServer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace ResourceServer
 {
@@ -29,8 +31,10 @@ namespace ResourceServer
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = Configuration.GetConnectionString("DefaultConnection");
+            var identityConnection = Configuration.GetConnectionString("IdentityDbConnection");
             services.AddDbContext<DSDbContext>(options => options.UseMySql(connection, new MySqlServerVersion(new Version(8,0,15)), b => b.MigrationsAssembly(nameof(DataLayer))));
-            
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(identityConnection));
+
             services.AddTransient<ICleaningSpace, EFCleaningSpaceRepository>();
             services.AddTransient<ILoginInformation, EFLoginInformationRepository>();
             services.AddTransient<IRole, EFRoleRepository>();
@@ -38,6 +42,8 @@ namespace ResourceServer
             services.AddTransient<IRoom, EFRoomRepository>();
 
             services.AddScoped<DataManager>();
+
+            services.AddIdentity<UserIdentity, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>();
 
             services.AddControllersWithViews();
         }
@@ -60,13 +66,17 @@ namespace ResourceServer
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}/{_id?}");
+                /*endpoints.MapControllerRoute(
+                    name: "api",
+                    pattern: "api/{controller}/{action}/{id?}");*/
             });
         }
     }

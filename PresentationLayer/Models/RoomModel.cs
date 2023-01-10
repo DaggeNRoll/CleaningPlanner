@@ -20,13 +20,16 @@ namespace PresentationLayer.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int CreatorId { get; set; }
+        public int RoomAdminId { get; set; }
     }
 
     public class RoomApiModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-      
+        public int RoomAdminId { get; set; }
+
         public List<int> UserIds { get; set; }
         public List<int> RoleIds { get; set; }
         public List<int> CleaningSpaceIds { get; set; }

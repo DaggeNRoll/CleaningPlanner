@@ -4,11 +4,19 @@
 <div>
 	<h1>Редактирование места уборки</h1>
 	<form asp-action="SaveCleaningSpace" asp-controller="CleaningSpace" method="post">
+		<div asp-validation-summary="ModelOnly"></div>
 		<input name="Id" type="hidden" value="@Model.Id" />
-		<input name="Name" value="@Model.Name" />
-		<br />
-		<input name="Description" value="@Model.Description" />
-		<br />
+		<div>
+			<label asp-for="Name"></label><br />
+			<input asp-for="Name" value=@Model.Name />
+			<span asp-validation-for="Name"></span>
+		</div>
+		<div>
+			<label asp-for="Description"></label><br />
+			<textarea asp-for="Description">@Model.Description</textarea> 
+			<span asp-validation-for="Description"></span>
+		</div>
+		
 		<input name="RoomId" type="hidden" value="@Model.RoomId" />
 		<input type="submit" />
 	</form>

@@ -1,0 +1,31 @@
+﻿@using PresentationLayer.Models
+@model RoomViewModel
+
+<div>
+    <h1>Редактировать пользователей</h1>
+</div>
+
+<div>
+    <div>
+        <ul>
+            @foreach(var user in Model.Users)
+            {
+                <li>@user.User.NickName</li> @Html.RouteLink("DeleteFromRoom",
+                new 
+                {
+                    controller = "User",
+                    action="DeleteFromRoom",
+                    roomId=Model.Room.Id, 
+                    userId=user.User.Id
+                }, 
+                new 
+                {
+                    @classs = "btn btn-default"
+                })
+            }
+        </ul>
+    </div>
+    <div>
+        @Html.ActionLink("Добавить пользователя","AddUser","Room",new{roomId=Model.Room.Id})
+    </div>
+</div>

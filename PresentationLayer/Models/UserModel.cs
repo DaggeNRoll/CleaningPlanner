@@ -1,6 +1,7 @@
 ﻿using DataLayer.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,8 @@ namespace PresentationLayer.Models
         public User User { get; set; }
         //public Room Room { get; set; }
         public List<CleaningSpaceViewModel> CleaningSpaces { get; set; }
-        public List<RoleViewModel> Roles { get; set; }
+
+        public RoleViewModel Role { get; set; }
 
     }
 
@@ -29,11 +31,15 @@ namespace PresentationLayer.Models
     public class UserApiModel
     {
         public int Id { get; set; }
+        [Required]
         public string FullName { get; set; }
+        [Required]
         public string Nickname { get; set; }
+        [Required]
+        public string Email { get; set; }
         public int? RoomId { get; set; }
 
         public List<int> CleaningSpaceIds { get; set; }
-        public List<int> RoleIds { get; set; }
+        
     }
 }

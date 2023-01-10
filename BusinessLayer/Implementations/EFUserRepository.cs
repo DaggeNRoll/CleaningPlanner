@@ -57,12 +57,12 @@ namespace BusinessLayer.Implementations
 
         public IEnumerable<User> GetAllUsers()
         {
-            return _context.Users.Include(u=>u.Roles).Include(u=>u.Room).Include(u=>u.CleaningSpaces).ToList();
+            return _context.Users.Include(u=>u.Role).Include(u=>u.Room).Include(u=>u.CleaningSpaces).ToList();
         }
 
         public User GetUser(int id)
         {
-            var user = _context.Users.Include(u=>u.Room).Include(u=>u.Roles).Include(u=>u.CleaningSpaces).Where(u=>u.Id==id).FirstOrDefault();
+            var user = _context.Users.Include(u=>u.Room).Include(u=>u.Role).Include(u=>u.CleaningSpaces).Where(u=>u.Id==id).FirstOrDefault();
             return user;
         }
 
@@ -100,6 +100,17 @@ namespace BusinessLayer.Implementations
             user.CleaningSpaces.Add(cleaningSpace);
             _context.SaveChanges();
         }
-       
+
+        public User GetUserByNickname(string nickname)
+        {
+            var user = _context.Users.Include(u => u.Room).Include(u => u.CleaningSpaces).Include(u => u.Role).FirstOrDefault(u => u.NickName == nickname);
+            return user;
+        }
+
+        public User GetUserByEmail(string email)
+        {
+            var user = _context.Users.Include(u => u.Room).Include(u => u.CleaningSpaces).Include(u => u.Role).FirstOrDefault(u => u.Email == email);
+            return user; 
+        }
     }
 }

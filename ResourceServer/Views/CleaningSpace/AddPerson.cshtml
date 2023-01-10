@@ -1,0 +1,28 @@
+﻿@using PresentationLayer.Models
+@model PersonCleaningSpaceModel
+
+<div>
+    <div>
+        <h1>Добавить ответственного</h1>
+    </div>
+    <div>
+        <form asp-action="AddPerson" asp-controller="CleaningSpace" method="post">
+            <div>
+                <input type="hidden" asp-for="CleaningSpaceId" value=@Model.CLeaningSpace.CleaningSpace.Id/> <br />
+            </div>
+            <div>
+                <select size="3" asp-for="SelectedUserId">
+                    <option disabled>Выберите пользователя</option>
+                        @foreach(var user in Model.Users){
+                        if (user.User.RoomId == Model.CLeaningSpace.CleaningSpace.RoomId)
+                        {
+                            <option value="@user.User.Id">@user.User.NickName</option>
+                        }
+                    }
+                </select>
+               
+                <input type="submit" />
+            </div>
+        </form>
+    </div>
+</div>

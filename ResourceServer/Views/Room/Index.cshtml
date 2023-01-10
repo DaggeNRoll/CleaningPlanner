@@ -17,7 +17,18 @@
 		</ul>
 	}
 	
-	@Html.ActionLink("Добавить место уборки","AddCLeaningSpace","CleaningSpace", new {roomId = Model.Room.Id,}, new {@classs = "btn btn-default"})
-	<br>
-	@Html.ActionLink("Редактировать комнату","RoomEditor","Room", new {roomId = Model.Room.Id,}, new {@classs = "btn btn-default"})
+	@Html.ActionLink("Добавить место уборки","CleaningSpaceEditor","CleaningSpace", new {roomId = Model.Room.Id,}, new {@classs = "btn btn-default"})
+	<br />
+	@{
+		string currentUserNickname = User.Identity.Name;
+
+		var currentUser = Model.Users.FirstOrDefault(u => u.User.NickName == currentUserNickname);
+		
+		if (currentUser.User.Id == Model.Room.RoomAdminId)
+		{
+			@Html.ActionLink("Редактировать комнату","RoomEditor","Room", new {roomId = Model.Room.Id,}, new {@classs = "btn btn-default"}) <br />
+			@Html.ActionLink("Редактировать пользователей", "UsersEditor", "Room", new {roomId = Model.Room.Id}, new {@classs = "btn btn-default"})
+		}
+	}
+	
 </div>

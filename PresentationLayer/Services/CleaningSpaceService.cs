@@ -67,6 +67,9 @@ namespace PresentationLayer.Services
             else
             {
                 List<User> users = new List<User>();
+
+                if (spaceEditModel.UserIds == null)
+                    spaceEditModel.UserIds = new List<int>();
                 foreach(var userId in spaceEditModel.UserIds)
                 {
                     users.Add(_dataManager.UserRepository.GetUser(userId));
@@ -139,6 +142,29 @@ namespace PresentationLayer.Services
         {
             var space = _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(spaceId);
             return _dataManager.CleaningSpaceRepository.DeleteCleaningSpace(space);
+        }
+
+        public CleaningSpaceViewModel ApiModelToViewModel(CleaningSpaceApiModel apiModel)
+        {
+            var viewModel = new CleaningSpaceViewModel
+            {
+                CleaningSpace = _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(apiModel.Id),
+                Users = new List<UserViewModel>()
+            };
+            return viewModel;
+        }
+
+        public CleaningSpaceApiModel ViewModelToApiModel(CleaningSpaceViewModel viewModel)
+        {
+            var apiModel = new CleaningSpaceApiModel
+            {
+                Id = viewModel.CleaningSpace.Id,
+                Name = viewModel.CleaningSpace.Name,
+                Description = viewModel.CleaningSpace.Description,
+                RoomId = viewModel.CleaningSpace.RoomId,
+                UserIds = viewModel.CleaningSpace.Users.Select(u => u.Id).ToList(),
+            };
+            return apiModel;
         }
 
         private void EnterInformation(ref CleaningSpace space, CleaningSpaceEditModel editModel)

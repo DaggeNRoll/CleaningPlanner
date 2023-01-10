@@ -102,7 +102,8 @@ namespace DataLayer.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Roles");
                 });
@@ -116,6 +117,9 @@ namespace DataLayer.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
+                    b.Property<int>("RoomAdminId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Rooms");
@@ -126,6 +130,9 @@ namespace DataLayer.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("FullName")
                         .HasColumnType("longtext");
@@ -189,8 +196,8 @@ namespace DataLayer.Migrations
                         .IsRequired();
 
                     b.HasOne("DataLayer.Entities.User", "User")
-                        .WithMany("Roles")
-                        .HasForeignKey("UserId")
+                        .WithOne("Role")
+                        .HasForeignKey("DataLayer.Entities.Role", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -221,7 +228,7 @@ namespace DataLayer.Migrations
                 {
                     b.Navigation("LoginInformation");
 
-                    b.Navigation("Roles");
+                    b.Navigation("Role");
                 });
 #pragma warning restore 612, 618
         }

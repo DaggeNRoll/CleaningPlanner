@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\AuthServer\\AuthServer.csproj": {}
+    "D:\\repos\\CleaningPlanner\\AuthServer\\AuthServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\AuthServer\\AuthServer.csproj": {
+    "D:\\repos\\CleaningPlanner\\AuthServer\\AuthServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\AuthServer\\AuthServer.csproj",
+        "projectUniqueName": "D:\\repos\\CleaningPlanner\\AuthServer\\AuthServer.csproj",
         "projectName": "AuthServer",
-        "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\AuthServer\\AuthServer.csproj",
+        "projectPath": "D:\\repos\\CleaningPlanner\\AuthServer\\AuthServer.csproj",
         "packagesPath": "C:\\Users\\dagge\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\AuthServer\\obj\\",
+        "outputPath": "D:\\repos\\CleaningPlanner\\AuthServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dagge\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\Com\\Com.csproj": {
-                "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\Com\\Com.csproj"
+              "D:\\repos\\CleaningPlanner\\Com\\Com.csproj": {
+                "projectPath": "D:\\repos\\CleaningPlanner\\Com\\Com.csproj"
               }
             }
           }
@@ -83,11 +83,11 @@
         }
       }
     },
-    "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\Com\\Com.csproj": {
+    "D:\\repos\\CleaningPlanner\\Com\\Com.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\Com\\Com.csproj",
+        "projectUniqueName": "D:\\repos\\CleaningPlanner\\Com\\Com.csproj",
         "projectName": "Com",
-        "projectPath": "C:\\Users\\dagge\\Source\\Repos\\DaggeNRoll\\CleaningPlanner\\Com\\Com.csproj",
+        "projectPath": "D:\\repos\\CleaningPlanner\\Com\\Com.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {}
