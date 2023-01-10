@@ -22,7 +22,7 @@ namespace ResourceServer.Controllers
         {
             _dataManager = dataManager;
             _serviceManager = new ServiceManager(dataManager);
-            _httpClient=new HttpClient();
+            _httpClient = new HttpClient();
             _url = "https://localhost:44372/api/room";
         }
 
@@ -40,38 +40,38 @@ namespace ResourceServer.Controllers
         [HttpGet]
         public IActionResult RoomByUserId(int userId)
         {
-            var room=_serviceManager.RoomService.GetRoomByUser(userId);
-            
-            if (room != null) 
+            var room = _serviceManager.RoomService.GetRoomByUser(userId);
+
+            if (room != null)
             {
                 RoomViewModel viewModel = _serviceManager.RoomService.RoomDbToViewModel(room.Id);
-				return View("Index",viewModel);
-			}
+                return View("Index", viewModel);
+            }
             else
             {
                 return RedirectToAction("RoomEditor");
-            } 
+            }
         }
 
         [HttpGet]
         public async Task<IActionResult> RoomByRoomId(int roomId)
         {
-            var content = await _httpClient.GetStringAsync(_url+$"/id/{roomId}");
+            var content = await _httpClient.GetStringAsync(_url + $"/id/{roomId}");
             RoomApiModel apiModel = JsonConvert.DeserializeObject<RoomApiModel>(content);
             RoomViewModel room = _serviceManager.RoomService.GetViewModelFromApi(apiModel);
-            return View("Index",room);
+            return View("Index", room);
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> RoomEditor(int roomId=0, int userId=0)
-        {            
+        public async Task<IActionResult> RoomEditor(int roomId = 0, int userId = 0)
+        {
             var content = await _httpClient.GetStringAsync(_url + $"/roomEditor?roomId={roomId}&userId={userId}");
-            RoomEditModel roomEditModel=JsonConvert.DeserializeObject<RoomEditModel>(content);
+            RoomEditModel roomEditModel = JsonConvert.DeserializeObject<RoomEditModel>(content);
             roomEditModel.RoomAdminId = userId;
 
-			return View("RoomEditor", roomEditModel);
-		}
+            return View("RoomEditor", roomEditModel);
+        }
 
         [HttpGet]
         [Route("editor/users/{roomId}")]
@@ -101,10 +101,10 @@ namespace ResourceServer.Controllers
 
             var content = await _httpClient.GetStringAsync($"https://localhost:44372/api/user/id/{editModel.RoomAdminId}");
             var userApiModel = JsonConvert.DeserializeObject<UserApiModel>(content);
-            userApiModel.RoomId=apiModel.Id;
+            userApiModel.RoomId = apiModel.Id;
             json = JsonConvert.SerializeObject(userApiModel);
             data = new StringContent(json, Encoding.UTF8, "application/json");
-            response = await _httpClient.PostAsync("https://localhost:44372/api/user",data);
+            response = await _httpClient.PostAsync("https://localhost:44372/api/user", data);
             result = await response.Content.ReadAsStringAsync();
             userApiModel = JsonConvert.DeserializeObject<UserApiModel>(result);
 
@@ -122,20 +122,20 @@ namespace ResourceServer.Controllers
         }
 
         [HttpGet]
-        [Route("delete/{roomId}/{userId}", Name ="Delete")]
+        [Route("delete/{roomId}/{userId}", Name = "Delete")]
         public async Task<IActionResult> DeleteRoom(int roomId, int userId)
         {
             try
             {
                 var response = await _httpClient.DeleteAsync(_url + $"/delete/id/{roomId}");
                 response.EnsureSuccessStatusCode();
-                return RedirectToAction("Index", "User", new {userId});
+                return RedirectToAction("Index", "User", new { userId });
             }
-            catch(HttpRequestException)
+            catch (HttpRequestException)
             {
                 return RedirectToAction("Error", "Home");
             }
-            
+
         }
 
         [HttpGet]
@@ -150,13 +150,13 @@ namespace ResourceServer.Controllers
 
             PersonRoomModel personRoomModel = new PersonRoomModel
             {
-                Room=roomApiModel,
-                Users=userApiModels,
-                RoomId=roomId,
-                SelectedUserId=0,
+                Room = roomApiModel,
+                Users = userApiModels,
+                RoomId = roomId,
+                SelectedUserId = 0,
             };
 
-            return View("AddPersonToRoom",personRoomModel);
+            return View("AddPersonToRoom", personRoomModel);
         }
 
         [HttpPost]
@@ -165,10 +165,10 @@ namespace ResourceServer.Controllers
         {
             var content = await _httpClient.GetStringAsync($"https://localhost:44372/api/user/id/{formModel.SelectedUserId}");
             var userApiModel = JsonConvert.DeserializeObject<UserApiModel>(content);
-            userApiModel.RoomId= formModel.RoomId;
+            userApiModel.RoomId = formModel.RoomId;
 
             var json = JsonConvert.SerializeObject(userApiModel);
-            var data = new StringContent(json, Encoding.UTF8,"application/json");
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
             await _httpClient.PostAsync("https://localhost:44372/api/user", data);
 
             content = await _httpClient.GetStringAsync(_url + $"/id/{formModel.RoomId}");
@@ -177,15 +177,15 @@ namespace ResourceServer.Controllers
 
             RoleApiModel roleApiModel = new RoleApiModel
             {
-                Name=RoleType.User.ToString(),
-                UserId=formModel.SelectedUserId,
-                RoomId=formModel.RoomId,
+                Name = RoleType.User.ToString(),
+                UserId = formModel.SelectedUserId,
+                RoomId = formModel.RoomId,
             };
             json = JsonConvert.SerializeObject(roleApiModel);
-            data = new StringContent(json,Encoding.UTF8,"application/json");
+            data = new StringContent(json, Encoding.UTF8, "application/json");
             await _httpClient.PostAsync("https://localhost:44372/api/role", data);
 
-            return RedirectToAction(nameof(UsersEditor), new { roomId=formModel.RoomId});
+            return RedirectToAction(nameof(UsersEditor), new { roomId = formModel.RoomId });
         }
     }
 }

@@ -2,11 +2,8 @@
 using DataLayer;
 using DataLayer.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Implementations
 {
@@ -16,7 +13,7 @@ namespace BusinessLayer.Implementations
 
         public EFRoleRepository(DSDbContext context)
         {
-            _context= context;
+            _context = context;
         }
 
         public int DeleteRole(int id)
@@ -25,7 +22,7 @@ namespace BusinessLayer.Implementations
 
             if (roleToDelete == null)
             {
-                return-1;
+                return -1;
             }
 
             _context.Remove(roleToDelete);
@@ -35,7 +32,7 @@ namespace BusinessLayer.Implementations
 
         public int DeleteRole(Role role)
         {
-            var roleToDelete = _context.Roles.FirstOrDefault(r=>r.Id == role.Id);
+            var roleToDelete = _context.Roles.FirstOrDefault(r => r.Id == role.Id);
 
             if (roleToDelete == null)
             {
@@ -49,27 +46,27 @@ namespace BusinessLayer.Implementations
 
         public IEnumerable<Role> GetAllRoles()//надо проверить инклюды
         {
-            return _context.Roles.Include(r=>r.User).Include(r=>r.User.Room).ToList();
+            return _context.Roles.Include(r => r.User).Include(r => r.User.Room).ToList();
         }
 
         public Role GetRole(int id)
         {
-           return _context.Roles.Include(r=>r.User).Include(r=>r.Room).FirstOrDefault(r=>r.Id==id);
+            return _context.Roles.Include(r => r.User).Include(r => r.Room).FirstOrDefault(r => r.Id == id);
         }
 
         public Role GetRole(User user, Room room)
         {
-            return _context.Roles.FirstOrDefault(r=>r.UserId==user.Id && r.RoomId==room.Id);
+            return _context.Roles.FirstOrDefault(r => r.UserId == user.Id && r.RoomId == room.Id);
         }
 
         public Role GetRoleByUser(int userId)
         {
-            return _context.Roles.Include(r=>r.User).Include(r=>r.Room).FirstOrDefault(r=>r.UserId==userId);
+            return _context.Roles.Include(r => r.User).Include(r => r.Room).FirstOrDefault(r => r.UserId == userId);
         }
 
         public IEnumerable<Role> GetRolesWithUsers(Room room)
         {
-            return _context.Roles.Where(r=>r.RoomId==room.Id).Include(r=>r.User).ToList();
+            return _context.Roles.Where(r => r.RoomId == room.Id).Include(r => r.User).ToList();
         }
 
         public void SaveRole(Role role)

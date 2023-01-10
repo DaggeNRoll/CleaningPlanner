@@ -1,15 +1,15 @@
 ﻿@using PresentationLayer.Models
 @model PersonRoomModel
 
-<div>
+<div class="text-center py-5">
     <div>
         <h1>Добавить пользователя</h1>
     </div>
     <div>
-        <form asp-action="AddUserPost" asp-controller="Room" method="post">
+        <form asp-action="AddUserPost" asp-controller="Room" method="post" class="w-50 mx-auto">
             <input type="hidden" asp-for="RoomId" value="@Model.RoomId" />
             <div>
-                <select size="3" asp-for="SelectedUserId">
+                <select size="5" asp-for="SelectedUserId" class="form-select">
                     <option disabled>Выберите пользователя</option>
                     @foreach(var user in Model.Users)
                     {
@@ -21,7 +21,8 @@
                 </select>
             </div>
             <div>
-                <input type="submit" />
+                
+                <button type="submit" class="btn btn-dark">Сохранить</button>
             </div>
         </form>
     </div>

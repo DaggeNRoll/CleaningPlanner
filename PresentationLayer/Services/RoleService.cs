@@ -1,11 +1,6 @@
 ﻿using BusinessLayer;
 using DataLayer.Entities;
 using PresentationLayer.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PresentationLayer.Services
 {
@@ -16,7 +11,7 @@ namespace PresentationLayer.Services
         //private RoomService _roomService;
         public RoleService(DataManager dataManager)
         {
-            _dataManager= dataManager;
+            _dataManager = dataManager;
             /*_userService = new UserService(dataManager);
             _roomService= new RoomService(dataManager);*/
         }
@@ -25,8 +20,8 @@ namespace PresentationLayer.Services
             var role = _dataManager.RoleRepository.GetRole(id);
 
             return new RoleViewModel()
-            { 
-                Role=role,
+            {
+                Role = role,
                 //User=_userService.UserDbModelToView(role.UserId),
                 //Room=_roomService.RoomDbToViewModel(role.RoomId),
             };
@@ -48,11 +43,11 @@ namespace PresentationLayer.Services
 
             return new RoleEditModel()
             {
-                Id=roleFromDb.Id,
-                Name=roleFromDb.Name,
-                Description=roleFromDb.Description,
-                UserId=roleFromDb.UserId,
-                RoomId=roleFromDb.RoomId,
+                Id = roleFromDb.Id,
+                Name = roleFromDb.Name,
+                Description = roleFromDb.Description,
+                UserId = roleFromDb.UserId,
+                RoomId = roleFromDb.RoomId,
             };
         }
 
@@ -85,10 +80,10 @@ namespace PresentationLayer.Services
             Role role = _dataManager.RoleRepository.GetRole(id);
             RoleApiModel roleApiModel = new RoleApiModel
             {
-                Id=role.Id,
-                Name=role.Name,
-                UserId=role.UserId,
-                RoomId=role.RoomId,
+                Id = role.Id,
+                Name = role.Name,
+                UserId = role.UserId,
+                RoomId = role.RoomId,
             };
 
             return roleApiModel;
@@ -111,7 +106,7 @@ namespace PresentationLayer.Services
         public RoleApiModel SaveApiModelToDb(RoleApiModel apiModel)
         {
             Role role;
-            if(apiModel.Id != 0)
+            if (apiModel.Id != 0)
             {
                 role = _dataManager.RoleRepository.GetRole(apiModel.Id);
             }

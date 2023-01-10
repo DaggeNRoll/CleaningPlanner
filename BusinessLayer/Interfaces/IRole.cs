@@ -1,9 +1,5 @@
 ﻿using DataLayer.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Interfaces
 {
@@ -14,7 +10,7 @@ namespace BusinessLayer.Interfaces
         public Role GetRole(User user, Room room);
         public IEnumerable<Role> GetRolesWithUsers(Room room);
         public Role GetRoleByUser(int userId);
-    
+
         public Role UpdateRole(Role role);
         public int DeleteRole(int id);
         public int DeleteRole(Role role);

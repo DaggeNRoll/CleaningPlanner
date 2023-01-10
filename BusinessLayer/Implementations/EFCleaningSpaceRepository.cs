@@ -2,11 +2,8 @@
 using DataLayer;
 using DataLayer.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Implementations
 {
@@ -16,7 +13,7 @@ namespace BusinessLayer.Implementations
 
         public EFCleaningSpaceRepository(DSDbContext context)
         {
-                _context= context;
+            _context = context;
         }
 
         public CleaningSpace AddCleaningSpace(CleaningSpace space, Room room)
@@ -45,7 +42,7 @@ namespace BusinessLayer.Implementations
 
         public int DeleteCleaningSpace(CleaningSpace space)
         {
-            var spaceToBeDeleted = _context.CleaningSpaces.FirstOrDefault(s=>s.Id==space.Id);
+            var spaceToBeDeleted = _context.CleaningSpaces.FirstOrDefault(s => s.Id == space.Id);
 
             if (spaceToBeDeleted == null)
             {
@@ -70,23 +67,23 @@ namespace BusinessLayer.Implementations
 
         public CleaningSpace GetCleaningSpaceById(int id)
         {
-            return _context.CleaningSpaces.Include(s=>s.Room).Include(s=>s.Users).FirstOrDefault(s => s.Id == id);
+            return _context.CleaningSpaces.Include(s => s.Room).Include(s => s.Users).FirstOrDefault(s => s.Id == id);
         }
 
         public IEnumerable<CleaningSpace> GetCleaningSpacesByRoom(Room room)
         {
-            return _context.CleaningSpaces.Where(s => s.Room == room).Include(s=>s.Room).Include(s=>s.Users);
+            return _context.CleaningSpaces.Where(s => s.Room == room).Include(s => s.Room).Include(s => s.Users);
         }
 
         public IEnumerable<CleaningSpace> GetCleaningSpacesByUser(User user)
         {
-            return _context.CleaningSpaces.Include(s=>s.Users).Where(s=>s.Users.Contains(user)).Include(s=>s.Room);
+            return _context.CleaningSpaces.Include(s => s.Users).Where(s => s.Users.Contains(user)).Include(s => s.Room);
         }
 
         public IEnumerable<CleaningSpace> GetCleaningSpacesByUser(int userId)
         {
             var user = _context.Users.FirstOrDefault(u => u.Id == userId);
-            return _context.CleaningSpaces.Include(s=>s.Users).Where(s=>s.Users.Contains(user));
+            return _context.CleaningSpaces.Include(s => s.Users).Where(s => s.Users.Contains(user));
         }
 
         public void SaveCleaningSpace(CleaningSpace space)
@@ -106,7 +103,7 @@ namespace BusinessLayer.Implementations
         {
             var spaceToBeUpdated = GetCleaningSpace(space);
 
-            if(spaceToBeUpdated == null) 
+            if (spaceToBeUpdated == null)
             {
                 return null;
             }

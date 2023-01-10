@@ -1,40 +1,43 @@
 ﻿@using PresentationLayer.Models
 @model RegisterViewModel
 
+
+<div class="text-center py-5">
 <div>
     <h1>Зарегистрироваться</h1>
 </div>
 
-<div>
+<div class="form-signin w-50 m-auto">
     <form method="post" asp-controller="Account" asp-action="Register">
         <div asp-validation-summary="ModelOnly"></div>
         <div>
             <label asp-for="Email"></label><br/>
-            <input asp-for="Email" />
+            <input asp-for="Email" class="form-control"/>
             <span asp-validation-for="Email"></span>
         </div>
         <div>
             <label asp-for="FullName"></label><br />
-            <input asp-for="FullName" />
+            <input asp-for="FullName" class="form-control"/>
             <span asp-validation-for="FullName"></span>
         </div>
         <div>
             <label asp-for="NickName"></label><br />
-            <input asp-for="NickName" />
+            <input asp-for="NickName" class="form-control"/>
             <span asp-validation-for="NickName"></span>
         </div>
         <div>
             <label asp-for="Password"></label><br />
-            <input asp-for="Password" />
+            <input asp-for="Password" class="form-control"/>
             <span asp-validation-for="Password"></span>
         </div>
         <div>
             <label asp-for="PasswordConfirm"></label> <br />
-            <input asp-for="PasswordConfirm" />
+            <input asp-for="PasswordConfirm" class="form-control"/> <br />
             <span asp-validation-for="PasswordConfirm"></span>
         </div>
         <div>
-            <input type="submit" value="Регистрация" />
+            <button class="w-50 btn btn-lg btn-primary" type="submit">Зарегистрироваться</button>
         </div>
     </form>
+</div>
 </div>

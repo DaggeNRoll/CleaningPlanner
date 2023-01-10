@@ -1,11 +1,8 @@
 ﻿using BusinessLayer;
 using DataLayer.Entities;
 using PresentationLayer.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PresentationLayer.Services
 {
@@ -27,22 +24,22 @@ namespace PresentationLayer.Services
 
             var users = new List<UserViewModel>();
 
-            foreach(var user in spaceFromDb.Users)
+            foreach (var user in spaceFromDb.Users)
             {
                 users.Add(_userService.UserDbModelToView(user.Id));
             }
             return new CleaningSpaceViewModel()
-            { 
-                CleaningSpace=spaceFromDb,
+            {
+                CleaningSpace = spaceFromDb,
                 //Room=_roomService.RoomDbToViewModel(spaceFromDb.RoomId),
-                Users=users,
+                Users = users,
             };
         }
 
         public CleaningSpaceEditModel GetCleaningSpaceEditModel(int id)
         {
             var spaceFromDb = _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(id);
-            
+
 
             return new CleaningSpaceEditModel()
             {
@@ -50,14 +47,14 @@ namespace PresentationLayer.Services
                 Name = spaceFromDb.Name,
                 Description = spaceFromDb.Description,
                 RoomId = spaceFromDb.RoomId,
-                UserIds=spaceFromDb.Users.Select(user=>user.Id).ToList(),
+                UserIds = spaceFromDb.Users.Select(user => user.Id).ToList(),
             };
         }
 
         public CleaningSpaceViewModel SaveCleaningSpaceEditModelToDb(CleaningSpaceEditModel spaceEditModel)
         {
             CleaningSpace space;
-            
+
 
             if (spaceEditModel.Id != 0)
             {
@@ -70,7 +67,7 @@ namespace PresentationLayer.Services
 
                 if (spaceEditModel.UserIds == null)
                     spaceEditModel.UserIds = new List<int>();
-                foreach(var userId in spaceEditModel.UserIds)
+                foreach (var userId in spaceEditModel.UserIds)
                 {
                     users.Add(_dataManager.UserRepository.GetUser(userId));
                 }
@@ -109,7 +106,7 @@ namespace PresentationLayer.Services
 
         public List<CleaningSpaceApiModel> GetAllCleaningSpacesApiModels()
         {
-            List<int> spacesFromDbIds = _dataManager.CleaningSpaceRepository.GetAllCleaningSpaces().Select(s=>s.Id).ToList();
+            List<int> spacesFromDbIds = _dataManager.CleaningSpaceRepository.GetAllCleaningSpaces().Select(s => s.Id).ToList();
             var spacesApi = new List<CleaningSpaceApiModel>();
 
             foreach (var spaceId in spacesFromDbIds)
@@ -118,7 +115,7 @@ namespace PresentationLayer.Services
             }
 
             return spacesApi;
-            
+
         }
 
         public CleaningSpaceApiModel SaveApiModelToDb(CleaningSpaceApiModel apiModel)
@@ -170,22 +167,22 @@ namespace PresentationLayer.Services
         private void EnterInformation(ref CleaningSpace space, CleaningSpaceEditModel editModel)
         {
             List<User> users = space.Users.ToList();
-            foreach(var userId in editModel.UserIds)
+            foreach (var userId in editModel.UserIds)
             {
                 users.Add(_dataManager.UserRepository.GetUser(userId));
             }
-            space.Name= editModel.Name;
-            space.Description= editModel.Description;
-            space.RoomId= editModel.RoomId;
+            space.Name = editModel.Name;
+            space.Description = editModel.Description;
+            space.RoomId = editModel.RoomId;
             space.Users = users;
         }
 
-        private void EnterInformation (ref CleaningSpace space, CleaningSpaceApiModel apiModel)
+        private void EnterInformation(ref CleaningSpace space, CleaningSpaceApiModel apiModel)
         {
             space.Name = apiModel.Name;
-            space.Description= apiModel.Description;
-            space.RoomId=apiModel.RoomId;
-            space.Users=apiModel.UserIds?.Select(sIds=>_dataManager.UserRepository.GetUser(sIds)).ToList() ?? new List<User>();
+            space.Description = apiModel.Description;
+            space.RoomId = apiModel.RoomId;
+            space.Users = apiModel.UserIds?.Select(sIds => _dataManager.UserRepository.GetUser(sIds)).ToList() ?? new List<User>();
         }
     }
 }

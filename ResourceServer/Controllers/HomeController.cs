@@ -1,14 +1,8 @@
 ﻿using BusinessLayer;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using PresentationLayer;
-using PresentationLayer.Models;
 using ResourceServer.Models;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ResourceServer.Controllers
 {
@@ -46,6 +40,6 @@ namespace ResourceServer.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        
+
     }
 }

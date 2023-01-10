@@ -1,11 +1,9 @@
 ﻿using BusinessLayer;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PresentationLayer;
 using PresentationLayer.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ResourceServer.Controllers
 {
@@ -49,7 +47,7 @@ namespace ResourceServer.Controllers
             RoomEditModel editModel = (roomId != 0)
                 ? _serviceManager.RoomService.GetRoomEditModel(roomId)
                 : _serviceManager.RoomService.CreateRoomEditModel();
-            
+
             return Ok(editModel);
         }
 

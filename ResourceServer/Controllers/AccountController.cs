@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PresentationLayer.Models;
 using ResourceServer.Models;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ResourceServer.Controllers
 {
-    
+
     [Route("account")]
     public class AccountController : Controller
     {
@@ -32,7 +31,7 @@ namespace ResourceServer.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = new UserIdentity
                 {
@@ -41,17 +40,17 @@ namespace ResourceServer.Controllers
                     UserName = model.NickName,
                 };
 
-                var result = await _userManager.CreateAsync(user,model.Password);
+                var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await _signingManager.SignInAsync(user, false);
                     await CreateUserInDb(model);
-                    return RedirectToAction("Index", "User", new {nickname = model.NickName });
+                    return RedirectToAction("Index", "User", new { nickname = model.NickName });
 
                 }
                 else
                 {
-                    foreach(var error in result.Errors)
+                    foreach (var error in result.Errors)
                     {
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
@@ -77,18 +76,18 @@ namespace ResourceServer.Controllers
 
                 if (result.Succeeded)
                 {
-                    if(!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
+                    if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                     {
                         return Redirect(model.ReturnUrl);
                     }
                     else
                     {
-                        return RedirectToAction("Index", "User", new {nickname = model.Nickname});
+                        return RedirectToAction("Index", "User", new { nickname = model.Nickname });
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("","Неправильный логин или пароль");
+                    ModelState.AddModelError("", "Неправильный логин или пароль");
                 }
             }
             return View(model);
@@ -99,7 +98,7 @@ namespace ResourceServer.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signingManager.SignOutAsync();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
         private async Task<string> CreateUserInDb(RegisterViewModel model)
@@ -108,7 +107,7 @@ namespace ResourceServer.Controllers
             var data = new System.Net.Http.StringContent(json, System.Text.Encoding.UTF8, "application/json");
             var url = "https://localhost:44372/api/user/register";
             using var client = new HttpClient();
-            var response = await client.PostAsync(url,data);
+            var response = await client.PostAsync(url, data);
 
             string result = response.Content.ReadAsStringAsync().Result;
             return result;

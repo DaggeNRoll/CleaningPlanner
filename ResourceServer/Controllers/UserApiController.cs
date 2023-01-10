@@ -1,10 +1,7 @@
 ﻿using BusinessLayer;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PresentationLayer;
 using PresentationLayer.Models;
-
-using System.Linq;
 
 namespace ResourceServer.Controllers
 {
@@ -40,7 +37,7 @@ namespace ResourceServer.Controllers
         [Route("nickname")]
         public IActionResult GetUserByNickname(string nickname)
         {
-            var apiModel=_serviceManager.UserService.GetApiModelFromDbByNickname(nickname);
+            var apiModel = _serviceManager.UserService.GetApiModelFromDbByNickname(nickname);
             return (apiModel != null) ? Ok(apiModel) : NotFound();
         }
 
@@ -52,7 +49,7 @@ namespace ResourceServer.Controllers
             return (apiModel != null) ? Ok(apiModel) : NotFound();
         }
 
-       
+
 
         [HttpPost]
         public IActionResult SaveUser(UserApiModel userApiModel)
@@ -71,7 +68,7 @@ namespace ResourceServer.Controllers
 
         [HttpDelete]
         [Route("{userId}")]
-        public IActionResult DeleteUser(int userId) 
+        public IActionResult DeleteUser(int userId)
         {
             int serviceResponce = _serviceManager.UserService.DeleteUser(userId);
 

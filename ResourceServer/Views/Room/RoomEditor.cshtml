@@ -2,7 +2,7 @@
 @model RoomEditModel
 
 
-<div>
+<div class="form signin w-50 m-auto text-center py-5">
 	<form asp-action="SaveRoom" asp-controller="Room" method="post">
 
 		@if (Model.Id == 0)
@@ -16,9 +16,14 @@
 		
 		<input name="Id" type="hidden" value="@Model.Id"/>
 		<input asp-for="RoomAdminId" type="hidden" value="@Model.RoomAdminId" />
-		<input name="Name" value="@Model.Name"/>
+		<div>
+			<label asp-for="Name"></label>
+			<input name="Name" value="@Model.Name" class="form-control"/> <br />
+		</div>
+		
 		<input asp-for="CreatorId" type="hidden" value=@Model.CreatorId />
-		<input type="submit"/>
+		
+		<button type="submit" class="btn btn-primary">Сохранить</button>
 	</form>
 </div>
 

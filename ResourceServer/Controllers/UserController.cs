@@ -45,7 +45,7 @@ namespace ResourceServer.Controllers
 
 
         [HttpGet]
-        
+
         public async Task<IActionResult> Index(string nickname)
         {
 
@@ -62,7 +62,7 @@ namespace ResourceServer.Controllers
         }
 
         [HttpGet]
-        [Route("deleteFromRoom/{userId}/{roomId}", Name ="DeleteFromRoom")]
+        [Route("deleteFromRoom/{userId}/{roomId}", Name = "DeleteFromRoom")]
         public async Task<IActionResult> DeleteFromRoom(int userId, int roomId)
         {
             var content = await _httpClient.GetStringAsync(_url + $"/id/{userId}");
@@ -84,7 +84,7 @@ namespace ResourceServer.Controllers
             json = JsonConvert.SerializeObject(roleApiModel);
             data = new StringContent(json, Encoding.UTF8, "application/json");
             await _httpClient.DeleteAsync($"https://localhost:44372/api/role/{roleApiModel.Id}");
-            
+
 
             return RedirectToAction("UsersEditor", "Room", new { roomId });
 

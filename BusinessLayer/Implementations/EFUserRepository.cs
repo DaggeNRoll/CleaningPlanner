@@ -5,8 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Implementations
 {
@@ -57,18 +55,18 @@ namespace BusinessLayer.Implementations
 
         public IEnumerable<User> GetAllUsers()
         {
-            return _context.Users.Include(u=>u.Role).Include(u=>u.Room).Include(u=>u.CleaningSpaces).ToList();
+            return _context.Users.Include(u => u.Role).Include(u => u.Room).Include(u => u.CleaningSpaces).ToList();
         }
 
         public User GetUser(int id)
         {
-            var user = _context.Users.Include(u=>u.Room).Include(u=>u.Role).Include(u=>u.CleaningSpaces).Where(u=>u.Id==id).FirstOrDefault();
+            var user = _context.Users.Include(u => u.Room).Include(u => u.Role).Include(u => u.CleaningSpaces).Where(u => u.Id == id).FirstOrDefault();
             return user;
         }
 
         public User UpdateUser(User user)
         {
-            var userToUpdate = _context.Users.Where(u => u.Id==user.Id).FirstOrDefault();
+            var userToUpdate = _context.Users.Where(u => u.Id == user.Id).FirstOrDefault();
             if (userToUpdate != null)
             {
                 userToUpdate = user;
@@ -92,7 +90,7 @@ namespace BusinessLayer.Implementations
             _context.SaveChanges();
         }
 
-        public void AddCleaningSpace(User user, CleaningSpace cleaningSpace) 
+        public void AddCleaningSpace(User user, CleaningSpace cleaningSpace)
         {
             if (user.CleaningSpaces.Contains(cleaningSpace))
                 return;
@@ -110,7 +108,7 @@ namespace BusinessLayer.Implementations
         public User GetUserByEmail(string email)
         {
             var user = _context.Users.Include(u => u.Room).Include(u => u.CleaningSpaces).Include(u => u.Role).FirstOrDefault(u => u.Email == email);
-            return user; 
+            return user;
         }
     }
 }

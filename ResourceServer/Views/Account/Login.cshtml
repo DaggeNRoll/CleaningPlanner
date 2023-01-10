@@ -1,34 +1,39 @@
 ﻿@using PresentationLayer.Models
 @model LoginViewModel
 
-<div>
-    <div><h1>Войти</h1></div>
 
-    <div>
+
+<div class="text-center py-5">
+    <div><h1>Войти</h1></div>
+       <main class="form-signin w-50 m-auto">
         <form method="post" asp-controller="Account" asp-action="login" asp-route-returnUrl="@Model.ReturnUrl">
             <div asp-validation-summary="ModelOnly"></div>
-            <div>
+            <div class="form-floating">
                 <label asp-for="Nickname"></label><br />
-                <input asp-for="Nickname" />
+                <input asp-for="Nickname" class="form-control" id="floatingInput"/>
                 <span asp-validation-for="Nickname"></span>
             </div>
             <div>
-                <label asp-for="Password"></label><br />
-                <input asp-for="Password" />
+                <label asp-for="Password" ></label><br />
+                <input asp-for="Password" class="form-control" id="floatingInput"/>
                 <span asp-validation-for="Password"></span>
             </div>
             <div>
-                <label asp-for="IsRememberd"></label><br />
                 <input asp-for="IsRememberd" />
+                <label asp-for="IsRememberd"></label>
+                
             </div>
             <div>
-                <input type="submit" value="Войти" />
+                <button class="w-50 btn btn-lg btn-primary" type="submit">Войти</button>
             </div>
         </form>
-    </div>
+        </main>
+
+    
     <div>
-        @Html.ActionLink("Создать аккаует","Register","Account",
+        @Html.ActionLink("Создать аккаунт","Register","Account",
         null, 
-        new {@classs = "btn btn-default"})
+        new {@classs = "w-50 btn btn-lg btn-primary"})
     </div>
 </div>
+

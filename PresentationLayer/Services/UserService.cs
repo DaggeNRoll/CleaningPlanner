@@ -1,11 +1,8 @@
 ﻿using BusinessLayer;
 using DataLayer.Entities;
 using PresentationLayer.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PresentationLayer.Services
 {
@@ -19,7 +16,7 @@ namespace PresentationLayer.Services
         public UserService(DataManager dataManager)
         {
             _dataManager = dataManager;
-           // _roomService = new RoomService(_dataManager);
+            // _roomService = new RoomService(_dataManager);
             _roleService = new RoleService(_dataManager);
             /*_cleaningSpaceService = new CleaningSpaceService(_dataManager);*/
         }
@@ -30,11 +27,11 @@ namespace PresentationLayer.Services
 
 
             var role = _roleService.RoleDbToViewModelByUser(userId);
-          
 
-            
 
-            return new UserViewModel() { User = user, Role = role};
+
+
+            return new UserViewModel() { User = user, Role = role };
         }
 
         public UserEditModel GetUserEditModel(int userId)
@@ -46,7 +43,7 @@ namespace PresentationLayer.Services
                 Id = userId,
                 FullName = modelFromDb.FullName,
                 NickName = modelFromDb.NickName,
-                RoomId=modelFromDb.RoomId,
+                RoomId = modelFromDb.RoomId,
             };
 
             return editModel;
@@ -58,7 +55,7 @@ namespace PresentationLayer.Services
 
             if (editModel.Id != 0)
             {
-                user=_dataManager.UserRepository.GetUser(editModel.Id);
+                user = _dataManager.UserRepository.GetUser(editModel.Id);
 
             }
             else
@@ -67,7 +64,7 @@ namespace PresentationLayer.Services
                 {
                     FullName = editModel.FullName,
                     NickName = editModel.NickName,
-                    RoomId=editModel.RoomId,
+                    RoomId = editModel.RoomId,
                 };
             }
             _dataManager.UserRepository.SaveUser(user);
@@ -90,7 +87,7 @@ namespace PresentationLayer.Services
                 {
                     FullName = userEditModel.FullName,
                     NickName = userEditModel.NickName,
-                    RoomId=userEditModel.RoomId,
+                    RoomId = userEditModel.RoomId,
                 };
             }
 
@@ -124,7 +121,7 @@ namespace PresentationLayer.Services
             var users = _dataManager.UserRepository.GetAllUsers();
             var userModels = new List<UserViewModel>();
 
-            foreach(var user in users)
+            foreach (var user in users)
             {
                 userModels.Add(UserDbModelToView(user.Id));
             }
@@ -134,10 +131,10 @@ namespace PresentationLayer.Services
 
         public List<UserApiModel> GetAllUserApiModels()
         {
-            var userIds = _dataManager.UserRepository.GetAllUsers().Select(u=>u.Id);
+            var userIds = _dataManager.UserRepository.GetAllUsers().Select(u => u.Id);
             var userApiModels = new List<UserApiModel>();
 
-            foreach(var userId in userIds)
+            foreach (var userId in userIds)
             {
                 userApiModels.Add(GetApiModelFromDb(userId));
             }
@@ -156,8 +153,8 @@ namespace PresentationLayer.Services
                 Nickname = user.NickName,
                 RoomId = user.RoomId,
                 CleaningSpaceIds = user.CleaningSpaces.Select(s => s.Id).ToList(),
-                
-                Email=user.Email,
+
+                Email = user.Email,
             };
 
             return userApi;
@@ -173,7 +170,7 @@ namespace PresentationLayer.Services
                 Nickname = user.NickName,
                 RoomId = user.RoomId,
                 CleaningSpaceIds = user.CleaningSpaces.Select(s => s.Id).ToList(),
-               
+
                 Email = user.Email,
             };
 
@@ -190,7 +187,7 @@ namespace PresentationLayer.Services
                 Nickname = user.NickName,
                 RoomId = user.RoomId,
                 CleaningSpaceIds = user.CleaningSpaces.Select(s => s.Id).ToList(),
-                
+
                 Email = user.Email,
             };
             return userApi;
@@ -203,7 +200,7 @@ namespace PresentationLayer.Services
             if (userApiModel.Id != 0)
             {
                 user = _dataManager.UserRepository.GetUser(userApiModel.Id);
-               
+
             }
             else
             {
@@ -223,7 +220,7 @@ namespace PresentationLayer.Services
         public UserApiModel CreateUser(RegisterViewModel registerViewModel)
         {
             var apiModel = RegisterModelToApi(registerViewModel);
-               return SaveApiModelToDb(apiModel);
+            return SaveApiModelToDb(apiModel);
         }
 
         public UserApiModel RegisterModelToApi(RegisterViewModel registerViewModel)
@@ -234,7 +231,7 @@ namespace PresentationLayer.Services
                 FullName = registerViewModel.FullName,
                 Nickname = registerViewModel.NickName,
                 CleaningSpaceIds = new List<int>(),
-                Email=registerViewModel.Email,
+                Email = registerViewModel.Email,
             };
             return apiModel;
         }
@@ -244,20 +241,20 @@ namespace PresentationLayer.Services
             UserViewModel viewModel = new UserViewModel()
             {
                 User = _dataManager.UserRepository.GetUser(apiModel.Id),
-                
+
             };
 
-            return viewModel; 
+            return viewModel;
         }
 
         private void EditUserInformation(ref User user, UserApiModel userApiModel)
         {
             user.FullName = userApiModel.FullName;
             user.NickName = userApiModel.Nickname;
-            user.RoomId= userApiModel.RoomId;
+            user.RoomId = userApiModel.RoomId;
             user.CleaningSpaces = userApiModel.CleaningSpaceIds.Select(cs => _dataManager.CleaningSpaceRepository.GetCleaningSpaceById(cs)).ToList();
-           
-            user.Email=userApiModel.Email;
+
+            user.Email = userApiModel.Email;
         }
     }
 }

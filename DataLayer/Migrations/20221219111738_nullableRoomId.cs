@@ -9,7 +9,7 @@ namespace DataLayer.Migrations
             /*migrationBuilder.DropForeignKey(
                 name: "IX_Users_RoomId",
                 table: "Users");*/
-            
+
 
             migrationBuilder.AlterColumn<int>(
                 name: "RoomId",
@@ -19,13 +19,13 @@ namespace DataLayer.Migrations
                 oldClrType: typeof(int),
                 oldType: "int");
 
-           /* migrationBuilder.AddForeignKey(
-                name: "FK_Users_Rooms_RoomId",
-                table: "Users",
-                column: "RoomId",
-                principalTable: "Rooms",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);*/
+            /* migrationBuilder.AddForeignKey(
+                 name: "FK_Users_Rooms_RoomId",
+                 table: "Users",
+                 column: "RoomId",
+                 principalTable: "Rooms",
+                 principalColumn: "Id",
+                 onDelete: ReferentialAction.Restrict);*/
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

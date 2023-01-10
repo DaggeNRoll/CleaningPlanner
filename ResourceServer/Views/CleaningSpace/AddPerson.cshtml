@@ -1,18 +1,18 @@
 ﻿@using PresentationLayer.Models
 @model PersonCleaningSpaceModel
 
-<div>
+<div class="text-center py-5">
     <div>
         <h1>Добавить ответственного</h1>
     </div>
     <div>
-        <form asp-action="AddPerson" asp-controller="CleaningSpace" method="post">
+        <form asp-action="AddPerson" asp-controller="CleaningSpace" method="post" class="w-50 mx-auto">
             <div>
                 <input type="hidden" asp-for="CleaningSpaceId" value=@Model.CLeaningSpace.CleaningSpace.Id/> <br />
             </div>
             <div>
-                <select size="3" asp-for="SelectedUserId">
-                    <option disabled>Выберите пользователя</option>
+                <select size="3" asp-for="SelectedUserId" class="form-select">
+                    <option disabled selected>Выберите пользователя</option>
                         @foreach(var user in Model.Users){
                         if (user.User.RoomId == Model.CLeaningSpace.CleaningSpace.RoomId)
                         {
@@ -20,8 +20,11 @@
                         }
                     }
                 </select>
-               
-                <input type="submit" />
+                
+               <br />
+               <br />
+                
+                <button type="submit" class="btn btn-dark">Сохранить</button>
             </div>
         </form>
     </div>

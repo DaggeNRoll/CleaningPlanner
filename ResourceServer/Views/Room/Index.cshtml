@@ -1,6 +1,7 @@
 ﻿@using PresentationLayer.Models;
 @model RoomViewModel
 
+<div class="text-center py-5">
 <div>
 	<h1>Комната @Model.Room.Name</h1>
 </div>
@@ -9,10 +10,10 @@
 	<h2>Места уборки</h2>
 	@if (Model.CleaningSpaces != null)
 	{
-		<ul>
+		<ul class="list-group w-25 mx-auto" >
 		@foreach(var cleaningSpace in Model.CleaningSpaces)
 		{
-			<li><a asp-action="Index" asp-controller="CleaningSpace" asp-route-cleaningSpaceId="@cleaningSpace.CleaningSpace.Id">@cleaningSpace.CleaningSpace.Name</a></li>
+			<li class="list-group-item"><a asp-action="Index" asp-controller="CleaningSpace" asp-route-cleaningSpaceId="@cleaningSpace.CleaningSpace.Id">@cleaningSpace.CleaningSpace.Name</a></li>
 		}
 		</ul>
 	}
@@ -31,4 +32,5 @@
 		}
 	}
 	
+</div>
 </div>

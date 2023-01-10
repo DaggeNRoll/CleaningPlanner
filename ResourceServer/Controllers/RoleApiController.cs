@@ -1,5 +1,4 @@
 ﻿using BusinessLayer;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PresentationLayer;
 using PresentationLayer.Models;
@@ -16,7 +15,7 @@ namespace ResourceServer.Controllers
         public RoleApiController(DataManager dataManager)
         {
             _dataManager = dataManager;
-            _serviceManager=new ServiceManager(dataManager);
+            _serviceManager = new ServiceManager(dataManager);
         }
 
         [HttpGet]
@@ -26,8 +25,8 @@ namespace ResourceServer.Controllers
             var role = _serviceManager.RoleService.GetApiModelFromDb(id);
             return role switch
             {
-                null=>NotFound("Запись не найдена"),
-                _=>Ok(role)
+                null => NotFound("Запись не найдена"),
+                _ => Ok(role)
             };
         }
 

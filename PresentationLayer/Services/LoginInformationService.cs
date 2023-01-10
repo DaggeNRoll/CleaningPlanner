@@ -1,11 +1,6 @@
 ﻿using BusinessLayer;
 using DataLayer.Entities;
 using PresentationLayer.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PresentationLayer.Services
 {
@@ -37,10 +32,10 @@ namespace PresentationLayer.Services
 
             return new LoginInformationEditModel()
             {
-                Id=loginFromDb.Id,
-                Login=loginFromDb.Login,
-                Password=loginFromDb.Password,
-                UserId=loginFromDb.UserId,
+                Id = loginFromDb.Id,
+                Login = loginFromDb.Login,
+                Password = loginFromDb.Password,
+                UserId = loginFromDb.UserId,
             };
         }
 

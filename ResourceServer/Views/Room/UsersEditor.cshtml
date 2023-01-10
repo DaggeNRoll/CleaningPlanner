@@ -1,16 +1,19 @@
 ﻿@using PresentationLayer.Models
 @model RoomViewModel
 
+<div class="text-center py-5">
 <div>
     <h1>Редактировать пользователей</h1>
 </div>
 
 <div>
     <div>
-        <ul>
+        <ul class="list-group list-group-flush w-25 mx-auto">
             @foreach(var user in Model.Users)
             {
-                <li>@user.User.NickName</li> @Html.RouteLink("DeleteFromRoom",
+                <li class="list-group-item ">
+                    @user.User.NickName <br/> <br/>
+                @Html.RouteLink("Удалить",
                 new 
                 {
                     controller = "User",
@@ -20,12 +23,15 @@
                 }, 
                 new 
                 {
-                    @classs = "btn btn-default"
-                })
+                    @class = "btn btn-danger"
+                })    
+                </li> 
             }
         </ul>
     </div>
+    <br/>
     <div>
-        @Html.ActionLink("Добавить пользователя","AddUser","Room",new{roomId=Model.Room.Id})
+        @Html.ActionLink("Добавить пользователя","AddUser","Room",new{roomId=Model.Room.Id}, new {@class="btn btn-primary"})
     </div>
+</div>
 </div>

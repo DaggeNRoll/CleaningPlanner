@@ -1,10 +1,5 @@
 ﻿using BusinessLayer;
 using PresentationLayer.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PresentationLayer
 {
@@ -27,9 +22,9 @@ namespace PresentationLayer
             _cleaningSpaceservice = new CleaningSpaceService(dataManager);
         }
 
-        public DataManager DataManager { get=>_dataManager; }
-        public UserService UserService{ get => _userService; }
-        public RoomService RoomService { get=>_roomService; }
+        public DataManager DataManager { get => _dataManager; }
+        public UserService UserService { get => _userService; }
+        public RoomService RoomService { get => _roomService; }
         public LoginInformationService LoginInformationService { get => _loginInformationService; }
         public RoleService RoleService { get => _roleService; }
         public CleaningSpaceService CleaningSpaceService { get => _cleaningSpaceservice; }

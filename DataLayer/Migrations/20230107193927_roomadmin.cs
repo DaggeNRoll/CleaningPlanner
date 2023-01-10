@@ -6,7 +6,7 @@ namespace DataLayer.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            
+
 
             migrationBuilder.AddColumn<int>(
                 name: "RoomAdminId",
@@ -15,18 +15,18 @@ namespace DataLayer.Migrations
                 nullable: false,
                 defaultValue: 0);
 
-           
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-           
+
 
             migrationBuilder.DropColumn(
                 name: "RoomAdminId",
                 table: "Rooms");
 
-           
+
         }
     }
 }

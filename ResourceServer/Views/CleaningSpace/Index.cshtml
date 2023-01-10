@@ -1,6 +1,7 @@
 ﻿@using PresentationLayer.Models
 @model CleaningSpaceViewModel
 
+<div class="text-center py-5">
 <div>
 	<h1>@Model.CleaningSpace.Name</h1>
 	<div>
@@ -9,16 +10,19 @@
 </div>
 <div>
 	<h2>Ответственные</h2>
-	<ul>
+	<ul class="list-group list-group-flush w-50 mx-auto">
 		@if(Model.CleaningSpace.Users!=null){
 			foreach(var user in Model.Users)
 			{
-				<li>@user.User.NickName</li>
+				<li class="list-group-item">@user.User.NickName</li>
 			}
 		}
 	</ul>
-	@Html.ActionLink("Назнвачить ответственного", "AddPerson", "CleaningSpace", new{cleaningSpaceId=Model.CleaningSpace.Id,}, new {@classs = "btn btn-default"})
+	<br />
+	@Html.ActionLink("Назначить ответственного", "AddPerson", "CleaningSpace", new{cleaningSpaceId=Model.CleaningSpace.Id,}, new {@class = "btn btn-primary"})<br />
 </div>
+<br />
 <div>
-	@Html.ActionLink("Редактировать","CleaningSpaceEditor","CleaningSpace", new {cleaningSpaceId = Model.CleaningSpace.Id,}, new {@classs = "btn btn-default"})
+	@Html.ActionLink("Редактировать","CleaningSpaceEditor","CleaningSpace", new {cleaningSpaceId = Model.CleaningSpace.Id,}, new {@class = "btn btn-primary"})
+</div>
 </div>

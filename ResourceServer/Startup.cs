@@ -4,17 +4,13 @@ using BusinessLayer.Interfaces;
 using DataLayer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ResourceServer.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 
 namespace ResourceServer
 {
@@ -32,7 +28,7 @@ namespace ResourceServer
         {
             var connection = Configuration.GetConnectionString("DefaultConnection");
             var identityConnection = Configuration.GetConnectionString("IdentityDbConnection");
-            services.AddDbContext<DSDbContext>(options => options.UseMySql(connection, new MySqlServerVersion(new Version(8,0,15)), b => b.MigrationsAssembly(nameof(DataLayer))));
+            services.AddDbContext<DSDbContext>(options => options.UseMySql(connection, new MySqlServerVersion(new Version(8, 0, 15)), b => b.MigrationsAssembly(nameof(DataLayer))));
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(identityConnection));
 
             services.AddTransient<ICleaningSpace, EFCleaningSpaceRepository>();

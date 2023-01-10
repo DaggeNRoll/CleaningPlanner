@@ -2,7 +2,6 @@
 using DataLayer;
 using DataLayer.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,11 +14,11 @@ namespace BusinessLayer.Implementations
         private DSDbContext _context;
         public EFLoginInformationRepository(DSDbContext context)
         {
-           _context = context;
+            _context = context;
         }
         public int DeleteLoginInformation(LoginInformation loginInformation)
         {
-            var loginToDelete = _context.LoginInformations.FirstOrDefault(l=>l==loginInformation);
+            var loginToDelete = _context.LoginInformations.FirstOrDefault(l => l == loginInformation);
             if (loginToDelete != null)
             {
                 _context.Remove(loginToDelete);
@@ -31,7 +30,7 @@ namespace BusinessLayer.Implementations
 
         public int DeleteLoginInformation(int id)
         {
-            var loginToDelete=_context.LoginInformations.FirstOrDefault(l=>l.Id==id);
+            var loginToDelete = _context.LoginInformations.FirstOrDefault(l => l.Id == id);
             if (loginToDelete != null)
             {
                 _context.Remove(loginToDelete);
@@ -43,7 +42,7 @@ namespace BusinessLayer.Implementations
 
         public int DeleteLoginInformation(User user)
         {
-            var loginToDelete = _context.LoginInformations.Include(u=>u.User).FirstOrDefault(l => l.User == user);
+            var loginToDelete = _context.LoginInformations.Include(u => u.User).FirstOrDefault(l => l.User == user);
             if (loginToDelete != null)
             {
                 _context.Remove(loginToDelete);
@@ -65,7 +64,7 @@ namespace BusinessLayer.Implementations
 
         public LoginInformation GetLoginInformation(int id)
         {
-            return _context.LoginInformations.Include(l=>l.User).FirstOrDefault(l => l.Id == id);
+            return _context.LoginInformations.Include(l => l.User).FirstOrDefault(l => l.Id == id);
         }
 
         public LoginInformation UpdateLoginInformation(LoginInformation loginInformation)

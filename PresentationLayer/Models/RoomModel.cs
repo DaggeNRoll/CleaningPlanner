@@ -1,9 +1,6 @@
 ﻿using DataLayer.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace PresentationLayer.Models
 {
@@ -16,9 +13,12 @@ namespace PresentationLayer.Models
         public List<CleaningSpaceViewModel> CleaningSpaces { get; set; }
     }
 
-    public class RoomEditModel 
+    public class RoomEditModel
     {
+
         public int Id { get; set; }
+        [Required]
+        [Display(Name="Название")]
         public string Name { get; set; }
         public int CreatorId { get; set; }
         public int RoomAdminId { get; set; }

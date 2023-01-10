@@ -1,5 +1,3 @@
-using System;
-
 namespace ResourceServer.Models
 {
     public class ErrorViewModel

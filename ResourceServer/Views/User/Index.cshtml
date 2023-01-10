@@ -1,7 +1,7 @@
 ﻿@using PresentationLayer.Models
 @model UserViewModel
 
-<div>
+<div class="py-5 text-center">
     <div>
         <h1>Информация о пользователе</h1>
     </div>
@@ -13,20 +13,25 @@
         @if (@Model.User.Room != null)
         {
            <div>
-               <a asp-action="RoomByRoomId" asp-controller="Room" asp-route-roomId="@Model.User.RoomId">@Model.User.Room.Name</a>
-               @Html.RouteLink("Delete", 
+               Комната: 
+               <a asp-action="RoomByRoomId" asp-controller="Room" asp-route-roomId="@Model.User.RoomId">@Model.User.Room.Name</a><br/><br/>
+               @Html.RouteLink("Удалить комнату", 
                new {controller = "Room", action = "DeleteRoom", roomId=@Model.User.RoomId, userId=@Model.User.Id},
-               new {@classs = "btn btn-default"})
-           </div>
+               new {@class = "btn btn-outline-danger btn-sm"})
+           </div> <br />
         
         <div>
             <div><h2>Места уборки</h2></div>
-            <ul>
+            <ul class="list-group w-25 mx-auto">
             @foreach(var space in @Model.CleaningSpaces)
             {
-                <li><a asp-action="Index" asp-controller="CleaningSpace" asp-route-cleaningSpaceId="@space.CleaningSpace.Id">@space.CleaningSpace.Name</a></li>
+                <li class="list-group-item"><a asp-action="Index" asp-controller="CleaningSpace" asp-route-cleaningSpaceId="@space.CleaningSpace.Id">@space.CleaningSpace.Name</a></li>
             }
             </ul>
+            @if (!Model.CleaningSpaces.Any())
+            {
+                <p>Вы всё прибрали, можно отдохнуть</p>
+            }
         </div>
     }
     else

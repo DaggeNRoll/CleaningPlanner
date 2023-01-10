@@ -15,7 +15,7 @@ namespace PresentationLayer.Models
         public string NickName { get; set; }
 
         [Required]
-        [Display(Name ="Электронная почта")]
+        [Display(Name = "Электронная почта")]
         public string Email { get; set; }
 
         [Required]

@@ -5,8 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Implementations
 {
@@ -60,7 +58,7 @@ namespace BusinessLayer.Implementations
 
         public Room GetRoomById(int roomID)
         {
-            return _context.Rooms.Include(r=>r.Roles).Include(r=>r.Users).Include(r=>r.CleaningSpaces).FirstOrDefault(r => r.Id == roomID);
+            return _context.Rooms.Include(r => r.Roles).Include(r => r.Users).Include(r => r.CleaningSpaces).FirstOrDefault(r => r.Id == roomID);
         }
 
         /*public IEnumerable<Room> GetRoomsByUser(int userID)
@@ -101,9 +99,9 @@ namespace BusinessLayer.Implementations
 
         public Room UpdateRoom(Room room)
         {
-            var roomToBeUpdated = _context.Rooms.FirstOrDefault(r=>r.Id==room.Id);
+            var roomToBeUpdated = _context.Rooms.FirstOrDefault(r => r.Id == room.Id);
 
-            if(roomToBeUpdated == null)
+            if (roomToBeUpdated == null)
             {
                 return null;
             }
